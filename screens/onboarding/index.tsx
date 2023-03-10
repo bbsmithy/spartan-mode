@@ -98,7 +98,7 @@ export default function OnboardingScreen() {
                     }}
                 >
                     <Text style={{color: "white", fontWeight: "500", fontSize: 15}}>
-                        Next
+                        {screenIndex === 3 ? "Done": "Next"}
                     </Text>
                 </Pressable>
             </View>
