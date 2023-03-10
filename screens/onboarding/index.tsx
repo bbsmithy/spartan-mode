@@ -1,4 +1,3 @@
-import { createContext, useState } from "react"
 import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native"
 import { shadow5 } from "../../styles"
 import Welcome from "./Welcome"
@@ -6,33 +5,28 @@ import PositiveActions from "./PositiveActions"
 import NegativeActions from "./NegativeActions"
 import Reminder from "./Reminders"
 import { AntDesign } from "@expo/vector-icons"
-
-
-const OnboardingContext = createContext({
-    pActionOneScore: null,
-    pActionTwoScore: null,
-    reminder: null
-});
-
+import { useDispatch, useSelector } from "react-redux"
+import { setScreenIndex } from "../../state/reducers/OnboardingReducer"
+import { getScreenIndex } from "../../state/selectors/OnboardingSelectors"
 
 export default function OnboardingScreen() {
 
-    const [screenIndex, setScreenIndex] = useState<number>(0);
-    const [actionOneTitle, setActionOneTitle] = useState<string>("")
-    const [actionTwoTitle, setActionTwoTitle] = useState<string>("")
-    const [actionOneScore, setActionOneScore] = useState<string>("");
-    const [actionTwoScore, setActionTwoScore] = useState<string>("");
-    const [negativeActionScore, setNegativeActionScore] = useState<string>("");
-    const [negativeActionTitle, setNegativeActionTitle] = useState<string>("")
+    const dispatch = useDispatch()
+    const screenIndex = useSelector(getScreenIndex)
 
 
     const back = () => {
-        setScreenIndex(screenIndex -1)
+        dispatch(setScreenIndex(screenIndex - 1))
     }
 
 
     const next = () => {
-        setScreenIndex(screenIndex + 1)
+        dispatch(setScreenIndex(screenIndex + 1))
+    }
+
+    const skip = () => {
+        // set onbaording complete
+        // dispatch()
     }
 
     const isWelcome = screenIndex === 0
@@ -79,18 +73,11 @@ export default function OnboardingScreen() {
         <ScrollView style={{ marginTop: "10%" }} contentContainerStyle={{ paddingBottom: 100 }}>
             {screenIndex === 0 && <Welcome />}
             {screenIndex === 1 && (
-                <PositiveActions 
-                    actionOneTitle={actionOneTitle}
-                    actionTwoTitle={actionTwoTitle}
-                    actionOneScore={actionOneScore}
-                    actionTwoScore={actionTwoScore}
-                    setActionOneTitle={setActionOneTitle}
-                    setActionTwoTitle={setActionTwoTitle} 
-                    setActionOneScore={setActionOneScore}
-                    setActionTwoScore={setActionTwoScore}
-                />
+                <PositiveActions />
             )}
-            {screenIndex === 2 && <NegativeActions />}
+            {screenIndex === 2 && (
+                <NegativeActions />
+             )}
             {screenIndex === 3 && <Reminder />}
         </ScrollView>
         
@@ -106,13 +93,7 @@ export default function OnboardingScreen() {
                     android_ripple={{
                         color: 'light-grey',
                     }}
-                    onPress={() => {
-                        if (screenIndex === 3) {
-                            setScreenIndex(0)
-                        } else {
-                            setScreenIndex(screenIndex+1)
-                        }
-                    }}
+                    onPress={next}
                 >
                     <Text style={{color: "white", fontWeight: "500", fontSize: 15}}>
                         {screenIndex === 3 ? "Done": "Next"}

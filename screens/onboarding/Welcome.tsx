@@ -6,7 +6,7 @@ const Welcome = () => {
         <View>
             <Text style={{ fontSize: 20 }}>Welcome to Spartan Mode</Text>
             <Text style={p}>
-                This app is designed to help you do the things that you know are good for you, and avoid the things that you know are bad for you.
+                This app is designed to help you do the things you know you should be doing, and avoid the things you know you shouldn't be doing.
             </Text>
             <Text style={p}>
                 Identify positive actions and assign a positive score to each.

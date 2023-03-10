@@ -1,29 +1,32 @@
-import { useState } from "react";
-import { View, Text, TextInput } from "react-native"
+import { View, Text } from "react-native"
+import { useDispatch, useSelector } from "react-redux";
 import ActionInput from "../../components/ActionInput";
+import { setNegativeActionScore, setNegativeActionTitle } from "../../state/reducers/OnboardingReducer";
+import { getNegativeActionScore, getNegativeActionTitle } from "../../state/selectors/OnboardingSelectors";
 import { p } from "../../styles";
 
 
 const NegativeActions = () => {
 
-    const [actionOne, setActionOne] = useState<string>("")
-    const [actionScore, setActionScore] = useState<string>("")
+    const dispatch = useDispatch();
 
-    const [actionTwo, setActionTwo] = useState<string>("")
-    const [actionTwoScore, setActionTwoScore] = useState<string>("")
+    const negativeActionTitle = useSelector(getNegativeActionTitle);
+    const negativeActionScore = useSelector(getNegativeActionScore);
 
-    const onChangeTitle = (text) => {
-        setActionOne(text)
-    }
-
-    const onChangeScore = (score) => {
-        setActionScore(score)
-    }
 
     return (
         <View>
-            <Text style={[p, {marginBottom: 25}]}>Now create 1 neative action (e.g Drinking) and assign a negtive score.</Text>
-            <ActionInput title={actionOne} score={actionScore} onChangeTitle={onChangeTitle} onChangeScore={onChangeScore} />
+            <Text style={[p, {marginBottom: 25}]}>Now create 1 neative action (e.g Drinking) and assign a negative score.</Text>
+            <ActionInput 
+                title={negativeActionTitle} 
+                score={negativeActionScore} 
+                onChangeTitle={(text) => {
+                    dispatch(setNegativeActionTitle(text))
+                }} 
+                onChangeScore={(text) => {
+                    dispatch(setNegativeActionScore(text))
+                }}
+            />
             {/* <Text>Lets get started by creating 2 positive actions you like to do (e.g Meditation, Gym) and assign a score to them</Text> */}
         </View>
     )
