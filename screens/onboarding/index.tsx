@@ -18,6 +18,12 @@ const OnboardingContext = createContext({
 export default function OnboardingScreen() {
 
     const [screenIndex, setScreenIndex] = useState<number>(0);
+    const [actionOneTitle, setActionOneTitle] = useState<string>("")
+    const [actionTwoTitle, setActionTwoTitle] = useState<string>("")
+    const [actionOneScore, setActionOneScore] = useState<string>("");
+    const [actionTwoScore, setActionTwoScore] = useState<string>("");
+    const [negativeActionScore, setNegativeActionScore] = useState<string>("");
+    const [negativeActionTitle, setNegativeActionTitle] = useState<string>("")
 
 
     const back = () => {
@@ -72,7 +78,18 @@ export default function OnboardingScreen() {
         </View>
         <ScrollView style={{ marginTop: "10%" }} contentContainerStyle={{ paddingBottom: 100 }}>
             {screenIndex === 0 && <Welcome />}
-            {screenIndex === 1 && <PositiveActions />}
+            {screenIndex === 1 && (
+                <PositiveActions 
+                    actionOneTitle={actionOneTitle}
+                    actionTwoTitle={actionTwoTitle}
+                    actionOneScore={actionOneScore}
+                    actionTwoScore={actionTwoScore}
+                    setActionOneTitle={setActionOneTitle}
+                    setActionTwoTitle={setActionTwoTitle} 
+                    setActionOneScore={setActionOneScore}
+                    setActionTwoScore={setActionTwoScore}
+                />
+            )}
             {screenIndex === 2 && <NegativeActions />}
             {screenIndex === 3 && <Reminder />}
         </ScrollView>
