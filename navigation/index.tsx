@@ -5,6 +5,7 @@ import { Text } from "react-native"
 import OnboardingScreen from '../screens/onboarding';
 import TabNavigator from '../screens/tabs';
 import { isOnboardingComplete } from '../state/selectors/OnboardingSelectors';
+import AddAction from '../screens/tabs/AddAction';
 
 const Stack = createNativeStackNavigator();
 
@@ -23,13 +24,23 @@ const Navigation = () => {
                 />
             )}
             {onboardingComplete && (
-                <Stack.Screen
-                    name="Main" 
-                    component={TabNavigator} 
-                    options={{
-                        headerShown: false
-                    }}
-                />
+                <>
+                    <Stack.Screen
+                        name="Main" 
+                        component={TabNavigator} 
+                        options={{
+                            headerShown: false
+                        }}
+                    />
+                    <Stack.Screen
+                        name='AddAction'
+                        component={AddAction}
+                        options={{
+                            headerShown: false,
+                            presentation: "modal"
+                        }}
+                    />
+                </>
             )}
             </Stack.Navigator>
         </NavigationContainer>
