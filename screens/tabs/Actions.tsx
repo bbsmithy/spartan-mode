@@ -1,12 +1,21 @@
 import { useNavigation } from "@react-navigation/native"
+import { useEffect } from "react"
 import { Text, View, FlatList, Button } from "react-native"
+import { useDispatch } from "react-redux"
 import ActionInput from "../../components/ActionInput"
 import FullButton from "../../components/FullButton"
+import { selectActions } from "../../state/thunks/ActionsThunks"
 
 
 const Actions = () => {
 
     const navigation = useNavigation()
+    const dispatch = useDispatch()
+
+
+    useEffect(() => {
+        dispatch(selectActions({ title: "YOYO", score: '50' }))
+    }, [])
 
     const onAdd = () => {
         navigation.navigate("AddAction")

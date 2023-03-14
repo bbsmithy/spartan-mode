@@ -11,13 +11,20 @@ export const actionsSlice = createSlice({
     actions: {}
   },
   reducers: {
-    addAction: (state, action: PayloadAction<{title: string, score: number}>) => {
-        const key = generateKey()
-        state.actionKeys.push(key)
-        state.actions[key] = { ...action.payload, key }
+    setActions: (state, action: PayloadAction<{title: string, score: number, id: number}[]>) => {
+        const actions = action.payload
+        state.actionKeys = actions.map(a => a.id)
+        state.actions = actions.reduce((acc, a) => {
+            acc[`${a.id}`] = a
+            return acc
+        }, {})
     },
-    updateAction: (state, action: PayloadAction<{title: string, score: number, key: string}>) => {
-        state.actions[action.payload.key] = action.payload
+    addAction: (state, action: PayloadAction<{title: string, score: number, id: number}>) => {
+        state.actionKeys.push(action.payload.id)
+        state.actions[`key`] = action.payload
+    },
+    updateAction: (state, action: PayloadAction<{title: string, score: number, id: number}>) => {
+        state.actions[action.payload.id] = action.payload
     },
     removeAction: (state, action: PayloadAction<string>) => {
         const key = action.payload
@@ -26,12 +33,5 @@ export const actionsSlice = createSlice({
     }
   },
 })
-
-// Action creators are generated for each case reducer function
-export const {
-    addAction,
-    updateAction,
-    removeAction
-} = actionsSlice.actions
 
 export default actionsSlice.reducer
