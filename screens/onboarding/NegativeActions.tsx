@@ -16,10 +16,11 @@ const NegativeActions = () => {
 
     return (
         <View>
-            <Text style={[p, {marginBottom: 25}]}>Now create 1 neative action (e.g Drinking) and assign a negative score.</Text>
+            <Text style={[p, {marginBottom: 25}]}>Now create 1 negative action (e.g Drinking) and assign a negative score.</Text>
             <ActionInput 
                 title={negativeActionTitle} 
-                score={negativeActionScore} 
+                score={negativeActionScore}
+                minus
                 onChangeTitle={(text) => {
                     dispatch(setNegativeActionTitle(text))
                 }} 

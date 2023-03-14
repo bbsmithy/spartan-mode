@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction, Store } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 // Redux Toolkit allows us to write "mutating" logic in reducers. It
 // doesn't actually mutate the state because it uses the Immer library,
@@ -14,7 +14,8 @@ export const onboardingSlice = createSlice({
     actionOneScore: "",
     actionTwoScore: "",
     negativeActionScore: "",
-    negativeActionTitle: ""
+    negativeActionTitle: "",
+    complete: false
   },
   reducers: {
     setScreenIndex: (state, action: PayloadAction<number>) => {
@@ -37,6 +38,9 @@ export const onboardingSlice = createSlice({
     },
     setNegativeActionTitle: (state, action: PayloadAction<string>) => {
         state.negativeActionTitle = action.payload
+    },
+    setComplete: (state) => {
+        state.complete = true
     }
   },
 })
@@ -49,7 +53,8 @@ export const {
     setActionTwoScore,
     setActionTwoTitle,
     setNegativeActionScore,
-    setNegativeActionTitle
+    setNegativeActionTitle,
+    setComplete
 } = onboardingSlice.actions
 
 export default onboardingSlice.reducer
