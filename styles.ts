@@ -10,4 +10,5 @@ export const shadow5 = {
 };
 
 export const p = {fontSize: 16, marginTop: 20}
+export const red = "#C24641"
   
