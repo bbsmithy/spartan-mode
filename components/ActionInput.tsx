@@ -1,4 +1,4 @@
-import { View, TextInput, Text } from "react-native"
+import { View, TextInput, Text, Button } from "react-native"
 
 
 type ActionInputProps = { 
@@ -23,19 +23,18 @@ const ActionInput = ({ onChangeTitle, onChangeScore, score, title, minus, placeh
                 padding: 10
             }}
         />
+        
         <View 
         style={{ 
-            borderRadius: 5,
-            backgroundColor: "#efefef", 
-            marginLeft: 5, 
-            flex: 2,
-            padding: 10,
+            backgroundColor: "#efefef",
+            flex: 3,
+            padding: 5,
             flexDirection: 'row',
             alignItems: "center"
         }}>
-            <Text style={{ marginRight: 5, fontSize: 16 }}>
-                {minus ? "-" : "+"}
-            </Text>
+            <View style={{ backgroundColor: "#efefef", justifyContent: "center", marginRight: 10 }}>
+                <Button title={minus ? "-" : "+"} />
+            </View>
             <TextInput 
                 keyboardType="number-pad" 
                 value={score} 
