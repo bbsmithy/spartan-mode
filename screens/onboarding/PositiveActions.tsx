@@ -22,6 +22,7 @@ const PositiveActions = () => {
             <ActionInput 
                 title={actionOneTitle} 
                 score={actionOneScore} 
+                canChangeSign={false}
                 onChangeTitle={(text) => {
                     dispatch(setActionOneTitle(text))
                 }} 
@@ -32,6 +33,7 @@ const PositiveActions = () => {
             <ActionInput 
                 title={actionTwoTitle} 
                 score={actionTwoScore} 
+                canChangeSign={false}
                 onChangeTitle={(text) => {
                     dispatch(setActionTwoTitle(text))
                 }} 

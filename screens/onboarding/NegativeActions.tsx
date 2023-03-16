@@ -21,6 +21,7 @@ const NegativeActions = () => {
                 title={negativeActionTitle} 
                 score={negativeActionScore}
                 minus
+                canChangeSign={false}
                 onChangeTitle={(text) => {
                     dispatch(setNegativeActionTitle(text))
                 }} 

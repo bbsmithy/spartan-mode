@@ -7,9 +7,10 @@ type ActionInputProps = {
     score: string, 
     title: string, 
     minus: boolean, 
-    placeholder: string
+    placeholder: string,
+    canChangeSign: boolean,
 }
-const ActionInput = ({ onChangeTitle, onChangeScore, score, title, minus, placeholder = "Action Title" }: ActionInputProps) => (
+const ActionInput = ({ onChangeTitle, onChangeScore, score, title, minus, canChangeSign = true, placeholder = "Action Title" }: ActionInputProps) => (
     <View style={{ flexDirection: "row", marginVertical: 5 }}>
         <TextInput 
             onChangeText={onChangeTitle} 
@@ -32,11 +33,12 @@ const ActionInput = ({ onChangeTitle, onChangeScore, score, title, minus, placeh
             flexDirection: 'row',
             alignItems: "center"
         }}>
-            <View style={{ backgroundColor: "#efefef", justifyContent: "center", marginRight: 10 }}>
-                <Button title={minus ? "-" : "+"} />
+            <View style={{ backgroundColor: "#efefef", justifyContent: "center", marginRight: 10, flex: 4, marginLeft: 1 }}>
+                <Button title={minus ? "-" : "+"} disabled={!canChangeSign} />
             </View>
             <TextInput 
-                keyboardType="number-pad" 
+                style={{flex: 6}}
+                keyboardType="numeric"
                 value={score} 
                 onChangeText={onChangeScore} 
                 placeholder="Score"
