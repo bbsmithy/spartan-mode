@@ -6,16 +6,10 @@ import ActionInput from "../../components/ActionInput";
 import FullButton from "../../components/FullButton";
 import { useNavigation } from "@react-navigation/native";
 import Actions from "./Actions";
+import Today from "./Today";
+import Spartan from "./Spartan";
 
 const Tabs = createBottomTabNavigator();
-
-const Today = () => {
-    return (
-        <View>
-            <Text>TODAY</Text>
-        </View>
-    )
-}
 
 function TabBarIcon(props: {
     name: string;
@@ -53,7 +47,7 @@ const TabNavigator = () => {
             />
             <Tabs.Screen 
                 name="Stats" 
-                component={Today}
+                component={Spartan}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color }) => (
