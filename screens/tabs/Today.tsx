@@ -5,8 +5,9 @@ import { useDispatch, useSelector } from "react-redux"
 import ActionInput from "../../components/ActionInput"
 import FullButton from "../../components/FullButton"
 import SelectActionBox from "../../components/SelectActionBox"
+import { todaySlice } from "../../state/reducers/TodayReducer"
 import { actionsList } from "../../state/selectors/ActionsSelectors"
-import { selectActions } from "../../state/thunks/ActionsThunks"
+import { selectedActionsList, todaysScore } from "../../state/selectors/TodaySelectors"
 
 
 const Actions = () => {
@@ -14,6 +15,10 @@ const Actions = () => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
     const actions = useSelector(actionsList)
+    const selectedActions = useSelector(selectedActionsList)
+    const currentScore = useSelector(todaysScore)
+
+    console.log("selected actions: ", selectedActions)
 
 
     useEffect(() => {
@@ -22,6 +27,10 @@ const Actions = () => {
 
     const onAdd = () => {
         navigation.navigate("AddAction")
+    }
+
+    const onSelect = (id: number) => {
+        dispatch(todaySlice.actions.toggleAction(id))
     }
 
     return (
@@ -35,7 +44,7 @@ const Actions = () => {
             <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                 <View style={{ flex: 2 }}>
                     <View style={{justifyContent: "center", padding: 40 }}>
-                        <Text style={{fontSize: 40, textAlign: "center"}}>30/100</Text>
+                        <Text style={{fontSize: 40, textAlign: "center"}}>{currentScore}/100</Text>
                     </View>
                 </View>
                 <View style={{ flex: 8 }}>
@@ -43,8 +52,17 @@ const Actions = () => {
                         data={actions}
                         contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 100}}
                         renderItem={({ item }) => {
+
+                            const selected = selectedActions.find((id) => id === item.id)
+
                             return (
-                                <SelectActionBox title={item.title} score={item.score} />
+                                <SelectActionBox 
+                                    title={item.title} 
+                                    score={item.score}
+                                    checked={selected}
+                                    id={item.id} 
+                                    onPress={onSelect}
+                                />
                             )
                         }}
                     />

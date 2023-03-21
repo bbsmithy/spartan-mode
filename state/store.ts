@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import OnboardingReducer from './reducers/OnboardingReducer'
 import ActionsReducer from './reducers/ActionsReducer'
+import TodayReducer from './reducers/TodayReducer'
 
 const store = configureStore({
   reducer: {
     OnboardingReducer,
-    ActionsReducer
+    ActionsReducer,
+    TodayReducer
   },
 })
 

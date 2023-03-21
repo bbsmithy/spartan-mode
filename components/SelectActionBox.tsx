@@ -3,39 +3,44 @@ import { View, Text, StyleSheet, Pressable } from "react-native"
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { shadow5 } from "../styles";
 
-type SelectActionBoxProps = { title: string, score: number, checked: boolean } 
-const SelectActionBox = ({ title, score }: SelectActionBoxProps) => {
+type SelectActionBoxProps = { title: string, score: number, checked: boolean, id: number, onPress: (id: number) => void } 
+const SelectActionBox = ({ title, score, onPress, id, checked }: SelectActionBoxProps) => {
 
-    const [check, setChecked] = useState(false)
+    const press = () => onPress(id)
 
-    const press = () => {setChecked(!check)}
+    const isPositive = score > 0;
 
     return (
-        <Pressable style={styles.selectActionBox} onPress={press}>
-            
-            <View style={{flex: 1}}>
-                <Text style={{fontSize: 20, fontWeight: "600"}}>{score}</Text>
-            </View>
-            <View style={{flex: 4}}>
-                <Text style={{fontSize: 16, fontWeight: "600"}}>{title}</Text>
-            </View>
-            <View style={{flex: 1}}>
-                <BouncyCheckbox isChecked={check} disableBuiltInState onPress={press} fillColor={score < 0 ? "red" : "green"} />
-            </View>
-        </Pressable>
+        <View style={styles.container}>
+            <Pressable style={styles.selectActionBox} android_ripple={{ color: isPositive ? 'green' : 'red'  }}  onPress={press}>
+                <View style={{flex: 1}}>
+                    <Text style={{fontSize: 20, fontWeight: "600"}}>{score}</Text>
+                </View>
+                <View style={{flex: 4}}>
+                    <Text style={{fontSize: 16, fontWeight: "600"}}>{title}</Text>
+                </View>
+                <View style={{flex: 1}}>
+                    <BouncyCheckbox isChecked={checked} disableBuiltInState onPress={press} fillColor={isPositive ? "green" : "red"} />
+                </View>
+            </Pressable>
+        </View>
+        
     )
 }
 
 const styles = StyleSheet.create({
     selectActionBox: {
-        borderRadius: 5,
-        marginVertical: 5,
-        overflow: 'hidden',
         alignItems: "center",
         width: "100%",
         padding: 20,
         backgroundColor: 'white',
-        flexDirection: "row",
+        flexDirection: "row"
+    },
+    container: {
+        borderRadius: 15,
+        marginVertical: 5,
+        overflow: 'hidden',
+        backgroundColor:"white",
         ...shadow5
     }
 })
