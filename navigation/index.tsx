@@ -1,7 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
-import { Text } from "react-native"
 import OnboardingScreen from '../screens/onboarding';
 import TabNavigator from '../screens/tabs';
 import { isOnboardingComplete } from '../state/selectors/OnboardingSelectors';
@@ -38,6 +37,7 @@ const Navigation = () => {
                         options={{
                             headerShown: false,
                             presentation: "modal"
+                            
                         }}
                     />
                 </>

@@ -2,20 +2,23 @@ import Database from "../../database";
 import { actionsSlice } from "../reducers/ActionsReducer";
 
 
-const spartan = new Database('spartan');
-
-
-export const selectActions = (action: { title: string, score: string }) => async (dispatch, getState) => {
-    spartan.db?.transaction(tx => {
-        tx.executeSql('SELECT * FROM actions', [], (_, { rows: { _array } }) => {})
+export const getAllActions = () => async (dispatch, getState) => {
+    Database.db?.transaction(tx => {
+        tx.executeSql('SELECT * FROM actions', [], (_, { rows: { _array } }) => {
+            dispatch(actionsSlice.actions.setActions(_array))
+        })
     })
 }
 
-export const addAction = (action: { title: string, score: number }) => async (dispatch) => {
-    spartan.db?.transaction(tx => {
-        tx.executeSql('INSERT INTO actions (title, score) VALUES (?, ?)', [action.title, action.score], (_, { rows: { _array } }) => {
-            const id = _array[0].id
-            dispatch(actionsSlice.actions.addAction({ ...action, id }))
+export const addAction = (action: { title: string, score: string }) => async (dispatch) => {
+    Database.db?.transaction(tx => {
+        tx.executeSql('INSERT INTO actions (title, score) VALUES (?, ?) ', [action.title, parseInt(action.score)])
+        tx.executeSql('SELECT * FROM actions WHERE rowid = last_insert_rowid()', [], (_, {rows: { _array }}) => {
+            console.log("add", _array[0])
+            dispatch(actionsSlice.actions.addAction(_array[0]))
+            dispatch(getAllActions())
         })
+    }, (err) => {
+        console.log({ err })
     })
 }

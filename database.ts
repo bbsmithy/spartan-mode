@@ -36,4 +36,5 @@ class Database {
     }
 }
 
-export default Database;
+const spartanDB = new Database('spartan');
+export default spartanDB;

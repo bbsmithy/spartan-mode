@@ -16,7 +16,7 @@ const Actions = () => {
 
 
     useEffect(() => {
-        dispatch(selectActions({ title: "YOYO", score: '50' }))
+        // dispatch(selectActions())
     }, [])
 
     const onAdd = () => {
@@ -39,10 +39,6 @@ const Actions = () => {
                 </View>
                 <View style={{flex: 8}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", padding: 20}}>
-                        <Text style={{fontSize: 24, fontWeight: "400"}}>
-                            Some Graph
-                        </Text>
-
                     </View>
                 </View>
             </View>

@@ -1,10 +1,11 @@
 import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
 import { Text, View, FlatList, Button } from "react-native"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import ActionInput from "../../components/ActionInput"
 import FullButton from "../../components/FullButton"
-import { selectActions } from "../../state/thunks/ActionsThunks"
+import { actionsList } from "../../state/selectors/ActionsSelectors"
+import { getAllActions } from "../../state/thunks/ActionsThunks"
 
 
 const Actions = () => {
@@ -12,9 +13,14 @@ const Actions = () => {
     const navigation = useNavigation()
     const dispatch = useDispatch()
 
+    const actions = useSelector(actionsList)
+
+    console.log("actions: ", actions)
+
+
 
     useEffect(() => {
-        dispatch(selectActions({ title: "YOYO", score: '50' }))
+        dispatch(getAllActions())
     }, [])
 
     const onAdd = () => {
@@ -30,19 +36,13 @@ const Actions = () => {
                 <Button title="Add" onPress={onAdd} />
             </View>
             <FlatList
-                data={[
-                    { title: "YOYO", score: '50' },
-                    { title: "YOYO", score: '50' },
-                    { title: "YOYO", score: '50' },
-                    { title: "YOYO", score: '50' },
-                    { title: "YOYO", score: '50' },
-                ]}
+                data={actions}
                 contentContainerStyle={{paddingTop: 20, paddingBottom: 100}}
                 renderItem={({ item }) => {
                     return (
                         <ActionInput 
                             title={item.title} 
-                            score={item.score}
+                            score={item.score.toString()}
                             onChangeScore={() => {}}
                             onChangeTitle={() => {}}
                         />

@@ -1,15 +1,15 @@
 import { View, Text, StyleSheet, Pressable, ScrollView } from "react-native"
-import { red, shadow5 } from "../../styles"
 import Welcome from "./Welcome"
 import PositiveActions from "./PositiveActions"
 import NegativeActions from "./NegativeActions"
 import Reminder from "./Reminders"
 import { AntDesign } from "@expo/vector-icons"
 import { useDispatch, useSelector } from "react-redux"
-import { setScreenIndex, setComplete } from "../../state/reducers/OnboardingReducer"
+import { setScreenIndex } from "../../state/reducers/OnboardingReducer"
 import { getScreenIndex } from "../../state/selectors/OnboardingSelectors"
 import { useNavigation } from "@react-navigation/native"
 import FullButton from "../../components/FullButton"
+import { completeOnboarding, resetDB } from "../../state/thunks/OnboardingThunks"
 
 export default function OnboardingScreen() {
 
@@ -26,7 +26,7 @@ export default function OnboardingScreen() {
 
     const next = () => {
         if (screenIndex === 3) {
-            dispatch(setComplete())
+            dispatch(completeOnboarding())
         } else {
             dispatch(setScreenIndex(screenIndex + 1))
         }
@@ -34,6 +34,8 @@ export default function OnboardingScreen() {
     }
 
     const skip = () => {
+        
+        dispatch(resetDB())
         // set onbaording complete
         // dispatch()
     }
@@ -73,7 +75,7 @@ export default function OnboardingScreen() {
                         justifyContent: "center", 
                         alignItems: "center"
                     }} 
-                    onPress={next}
+                    onPress={skip}
                 >
                     <Text>Skip</Text>
                 </Pressable> 

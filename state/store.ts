@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import OnboardingReducer from './reducers/OnboardingReducer'
+import ActionsReducer from './reducers/ActionsReducer'
 
 const store = configureStore({
   reducer: {
-    OnboardingReducer
+    OnboardingReducer,
+    ActionsReducer
   },
 })
 
