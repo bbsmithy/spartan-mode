@@ -1,4 +1,5 @@
 import { View, TextInput, Text, Button } from "react-native"
+import { shadow5 } from "../styles";
 
 
 type ActionInputProps = { 
@@ -11,7 +12,7 @@ type ActionInputProps = {
     canChangeSign: boolean,
 }
 const ActionInput = ({ onChangeTitle, onChangeScore, score, title, minus, canChangeSign = true, placeholder = "Action Title" }: ActionInputProps) => (
-    <View style={{ flexDirection: "row", marginVertical: 5 }}>
+    <View style={{ flexDirection: "row", marginVertical: 5, ...shadow5 }}>
         <TextInput 
             onChangeText={onChangeTitle} 
             placeholder={placeholder} 
@@ -30,6 +31,7 @@ const ActionInput = ({ onChangeTitle, onChangeScore, score, title, minus, canCha
             backgroundColor: "#efefef",
             flex: 3,
             padding: 5,
+            borderRadius: 5,
             flexDirection: 'row',
             alignItems: "center"
         }}>

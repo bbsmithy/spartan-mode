@@ -1,11 +1,12 @@
 import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
-import { Text, View, FlatList, Button } from "react-native"
+import { Text, View, FlatList, Button, StyleSheet } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import ActionInput from "../../components/ActionInput"
 import FullButton from "../../components/FullButton"
 import { actionsList } from "../../state/selectors/ActionsSelectors"
 import { getAllActions } from "../../state/thunks/ActionsThunks"
+import { shadow5 } from "../../styles"
 
 
 const Actions = () => {
@@ -69,5 +70,12 @@ const Actions = () => {
         
     )
 }
+
+const styles = StyleSheet.create({
+    actionInput: {
+        borderRadius: 5,
+        margin: 5,
+    }
+})
 
 export default Actions;

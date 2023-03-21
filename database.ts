@@ -1,5 +1,3 @@
-import * as FileSystem from "expo-file-system"
-import { Asset } from "expo-asset"
 import * as SQLite from 'expo-sqlite';
 
 
@@ -32,6 +30,14 @@ class Database {
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );`
             );
+            tx.executeSql(
+                `CREATE TABLE IF NOT EXISTS daily_reports (
+                    id INTEGER PRIMARY KEY NOT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                    actions JSONB NOT NULL,
+                    total_score INTEGER NOT NULL
+                );`
+            )
         });
     }
 }

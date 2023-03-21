@@ -14,10 +14,10 @@ const SelectActionBox = ({ title, score }: SelectActionBoxProps) => {
         <Pressable style={styles.selectActionBox} onPress={press}>
             
             <View style={{flex: 1}}>
-                <Text style={{fontSize: 15, fontWeight: "600"}}>{score}</Text>
+                <Text style={{fontSize: 20, fontWeight: "600"}}>{score}</Text>
             </View>
             <View style={{flex: 4}}>
-                <Text style={{fontSize: 15, fontWeight: "600"}}>{title}</Text>
+                <Text style={{fontSize: 16, fontWeight: "600"}}>{title}</Text>
             </View>
             <View style={{flex: 1}}>
                 <BouncyCheckbox isChecked={check} disableBuiltInState onPress={press} fillColor={score < 0 ? "red" : "green"} />
