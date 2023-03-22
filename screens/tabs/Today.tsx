@@ -30,6 +30,9 @@ const Actions = () => {
     }
 
     const onSelect = (id: number) => {
+
+        
+
         dispatch(todaySlice.actions.toggleAction(id))
     }
 
@@ -59,6 +62,7 @@ const Actions = () => {
                                 <SelectActionBox 
                                     title={item.title} 
                                     score={item.score}
+                                    positive={item.positive}
                                     checked={selected}
                                     id={item.id} 
                                     onPress={onSelect}

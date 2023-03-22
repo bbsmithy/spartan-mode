@@ -9,7 +9,10 @@ import { setScreenIndex } from "../../state/reducers/OnboardingReducer"
 import { getScreenIndex } from "../../state/selectors/OnboardingSelectors"
 import { useNavigation } from "@react-navigation/native"
 import FullButton from "../../components/FullButton"
-import { completeOnboarding, resetDB } from "../../state/thunks/OnboardingThunks"
+import { completeOnboarding } from "../../state/thunks/OnboardingThunks"
+import { useEffect } from "react"
+
+import Database from "../../database";
 
 export default function OnboardingScreen() {
 
@@ -17,6 +20,10 @@ export default function OnboardingScreen() {
     const screenIndex = useSelector(getScreenIndex)
 
     const navigation = useNavigation()
+
+    useEffect(() => {
+        Database.logTableSchema('actions')
+    }, [])
 
 
     const back = () => {
@@ -35,7 +42,7 @@ export default function OnboardingScreen() {
 
     const skip = () => {
         
-        dispatch(resetDB())
+        Database.resetDatabase()
         // set onbaording complete
         // dispatch()
     }

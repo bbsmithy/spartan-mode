@@ -7,30 +7,18 @@ export const completeOnboarding = () => async (dispatch, getState) => {
         const state = getState().OnboardingReducer;
 
         if (state.actionOneScore && state.actionOneTitle) {
-            dispatch(addAction({ title: state.actionOneTitle, score: state.actionOneScore }));
+            dispatch(addAction({ title: state.actionOneTitle, score: state.actionOneScore, positive: true }));
         }
     
         if (state.actionTwoScore && state.actionTwoTitle) {
-            dispatch(addAction({ title: state.actionTwoTitle, score: state.actionTwoScore }));
+            dispatch(addAction({ title: state.actionTwoTitle, score: state.actionTwoScore, positive: true }));
         }
     
         if (state.negativeActionScore && state.negativeActionTitle) {
-            dispatch(addAction({ title: state.negativeActionTitle, score: `-${state.negativeActionScore}` }));
+            dispatch(addAction({ title: state.negativeActionTitle, score: state.negativeActionScore, positive: false }));
         }
     
         dispatch(onboardingSlice.actions.setComplete());
-    } catch (err) {
-        console.log({ err })
-    }
-}
-
-
-export const resetDB = () => async (dispatch) => {
-    try {
-        Database.db?.transaction(tx => {
-            tx.executeSql('DROP TABLE actions');
-            tx.executeSql('CREATE TABLE IF NOT EXISTS actions (id INTEGER PRIMARY KEY NOT NULL, title TEXT, score INTEGER)');
-        })
     } catch (err) {
         console.log({ err })
     }

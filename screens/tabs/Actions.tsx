@@ -42,7 +42,8 @@ const Actions = () => {
                 renderItem={({ item }) => {
                     return (
                         <ActionInput 
-                            title={item.title} 
+                            title={item.title}
+                            positive={item.positive}
                             score={item.score.toString()}
                             onChangeScore={() => {}}
                             onChangeTitle={() => {}}

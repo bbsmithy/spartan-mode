@@ -1,17 +1,39 @@
-import { View, TextInput, Text, Button } from "react-native"
+import { View, TextInput, Text, Button, Pressable } from "react-native"
 import { shadow5 } from "../styles";
+
+
+const SignToggle = ({ positive, onSwitch, disabled }) => {
+    return (
+        <Pressable 
+            android_ripple={{ color: 'light-grey' }} 
+            style={{
+                justifyContent: "center",
+                alignItems: "center",
+                backgroundColor: positive ? "green" : "red",
+                borderRadius: 5
+            }}
+            disabled={disabled}
+            onPress={() => {onSwitch(!positive)}}
+        >
+            <Text style={{fontSize: 25, color: "white"}}>
+                {positive ? "+":"-"}
+            </Text>
+        </Pressable>
+    )
+}
 
 
 type ActionInputProps = { 
     onChangeTitle: (title: string) => void, 
-    onChangeScore: (score: string) => void, 
+    onChangeScore: (score: string) => void,
+    onChangeSign?: (positive: boolean) => void,
     score: string, 
     title: string, 
-    minus: boolean, 
-    placeholder: string,
-    canChangeSign: boolean,
+    positive: boolean, 
+    placeholder?: string,
+    canChangeSign?: boolean,
 }
-const ActionInput = ({ onChangeTitle, onChangeScore, score, title, minus, canChangeSign = true, placeholder = "Action Title" }: ActionInputProps) => (
+const ActionInput = ({ onChangeTitle, onChangeScore, onChangeSign, score, title, positive, canChangeSign = true, placeholder = "Action Title" }: ActionInputProps) => (
     <View style={{ flexDirection: "row", marginVertical: 5, ...shadow5 }}>
         <TextInput 
             onChangeText={onChangeTitle} 
@@ -36,7 +58,7 @@ const ActionInput = ({ onChangeTitle, onChangeScore, score, title, minus, canCha
             alignItems: "center"
         }}>
             <View style={{ backgroundColor: "#efefef", justifyContent: "center", marginRight: 10, flex: 4, marginLeft: 1 }}>
-                <Button title={minus ? "-" : "+"} disabled={!canChangeSign} />
+                <SignToggle positive={positive} onSwitch={onChangeSign} disabled={!canChangeSign}  />
             </View>
             <TextInput 
                 style={{flex: 6}}

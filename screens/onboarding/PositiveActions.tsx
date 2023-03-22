@@ -21,18 +21,20 @@ const PositiveActions = () => {
             <Text style={[p, {marginBottom: 25}]}>Lets get started by creating 2 positive actions (e.g Meditation, Gym) and assign a score to them.</Text>
             <ActionInput 
                 title={actionOneTitle} 
-                score={actionOneScore} 
+                score={actionOneScore}
+                positive
                 canChangeSign={false}
                 onChangeTitle={(text) => {
                     dispatch(setActionOneTitle(text))
                 }} 
                 onChangeScore={(text) => {
                     dispatch(setActionOneScore(text))
-                }} 
+                }}
             />
             <ActionInput 
                 title={actionTwoTitle} 
-                score={actionTwoScore} 
+                score={actionTwoScore}
+                positive
                 canChangeSign={false}
                 onChangeTitle={(text) => {
                     dispatch(setActionTwoTitle(text))

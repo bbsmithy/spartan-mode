@@ -3,24 +3,22 @@ import { View, Text, StyleSheet, Pressable } from "react-native"
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { shadow5 } from "../styles";
 
-type SelectActionBoxProps = { title: string, score: number, checked: boolean, id: number, onPress: (id: number) => void } 
-const SelectActionBox = ({ title, score, onPress, id, checked }: SelectActionBoxProps) => {
+type SelectActionBoxProps = { title: string, score: number, positive: number, checked: boolean, id: number, onPress: (id: number) => void } 
+const SelectActionBox = ({ title, score, onPress, id, checked, positive }: SelectActionBoxProps) => {
 
     const press = () => onPress(id)
 
-    const isPositive = score > 0;
-
     return (
         <View style={styles.container}>
-            <Pressable style={styles.selectActionBox} android_ripple={{ color: isPositive ? 'green' : 'red'  }}  onPress={press}>
+            <Pressable style={styles.selectActionBox} android_ripple={{ color: positive ? 'green' : 'red'  }}  onPress={press}>
                 <View style={{flex: 1}}>
-                    <Text style={{fontSize: 20, fontWeight: "600"}}>{score}</Text>
+                    <Text style={{fontSize: 20, fontWeight: "600"}}>{!positive && "-"}{score}</Text>
                 </View>
                 <View style={{flex: 4}}>
                     <Text style={{fontSize: 16, fontWeight: "600"}}>{title}</Text>
                 </View>
                 <View style={{flex: 1}}>
-                    <BouncyCheckbox isChecked={checked} disableBuiltInState onPress={press} fillColor={isPositive ? "green" : "red"} />
+                    <BouncyCheckbox isChecked={checked} disableBuiltInState onPress={press} fillColor={positive ? "green" : "red"} />
                 </View>
             </Pressable>
         </View>

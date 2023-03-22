@@ -7,6 +7,10 @@ export const selectedActionsList = (state: RootState) => {
 export const todaysScore = (state: RootState) => {
     const actions = state.TodayReducer.selectedActions.map(id => state.ActionsReducer.actions[id])
     return actions.reduce((acc, a) => {
-        return acc + a.score
+        if (a.positive) {
+            return acc + a.score
+        } else {
+            return acc - a.score
+        }
     }, 0)
 }
