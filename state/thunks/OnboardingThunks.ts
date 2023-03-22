@@ -14,8 +14,8 @@ export const completeOnboarding = () => async (dispatch, getState) => {
             dispatch(addAction({ title: state.actionTwoTitle, score: state.actionTwoScore }));
         }
     
-        if (state.actionThreeScore && state.actionThreeTitle) {
-            dispatch(addAction({ title: state.actionThreeTitle, score: state.actionThreeScore }));
+        if (state.negativeActionScore && state.negativeActionTitle) {
+            dispatch(addAction({ title: state.negativeActionTitle, score: `-${state.negativeActionScore}` }));
         }
     
         dispatch(onboardingSlice.actions.setComplete());
