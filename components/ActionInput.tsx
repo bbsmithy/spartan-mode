@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { View, TextInput, Text, Pressable } from "react-native"
 import { useDispatch } from "react-redux";
+import { actionsSlice } from "../state/reducers/ActionsReducer";
 import { shadow5 } from "../styles";
 
 
@@ -48,15 +49,15 @@ const ActionInput = ({
 
 
     const onChangeTitle = (title: string) => {
-        dispatch()
+        dispatch(actionsSlice.actions.updateAction({ key: 'title', value: title, id }))
     }
 
     const onChangeScore = (score: string) => {
-
+        dispatch(actionsSlice.actions.updateAction({ key: 'score', value: score, id }))
     }
 
     const onChangeSign = (positive: boolean) => {
-
+        dispatch(actionsSlice.actions.updateAction({ key: 'positive', value: positive, id }))
     }
 
     return (
@@ -70,7 +71,8 @@ const ActionInput = ({
                     backgroundColor: "#efefef",
                     marginRight: 5,
                     flex: 7,
-                    padding: 10
+                    padding: 10,
+                    fontSize: 15
                 }}
             />
             
@@ -87,7 +89,7 @@ const ActionInput = ({
                     <SignToggle positive={positive} onSwitch={onChangeSign}  />
                 </View>
                 <TextInput 
-                    style={{flex: 6}}
+                    style={{flex: 6, fontSize: 15}}
                     keyboardType="numeric"
                     value={score}
                     onChangeText={onChangeScore} 

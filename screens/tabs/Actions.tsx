@@ -75,20 +75,23 @@ const Actions = () => {
                     )
                 }}
             />
-            <View style={{
-                position: "absolute", 
-                bottom:60, 
-                width: "100%", 
-                left: 20
-            }}>
-                <FullButton 
-                    text={"Save"}
-                    disabled={!saveEnabled}
-                    onPress={() => {
-                        alert("SAVE")
-                    }}
-                />
-            </View>
+            {saveEnabled && (
+                <View style={{
+                    position: "absolute", 
+                    bottom:60, 
+                    width: "100%", 
+                    left: 20
+                }}>
+                    <FullButton 
+                        text={"Save"}
+                        disabled={!saveEnabled}
+                        onPress={() => {
+                            alert("SAVE")
+                        }}
+                    />
+                </View>
+            )}
+
         </View>
     )
 }
