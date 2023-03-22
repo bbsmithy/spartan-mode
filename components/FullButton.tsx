@@ -2,7 +2,7 @@ import { View, Pressable, Text, StyleSheet } from "react-native"
 import { red, shadow5 } from "../styles"
 
 
-const FullButton = ({ text, onPress }) => {
+const FullButton = ({ text, onPress, disabled }) => {
     return (
         <View style={styles.nextBtn}>
             <Pressable
@@ -13,6 +13,7 @@ const FullButton = ({ text, onPress }) => {
                     padding: 20,
                     alignItems: "center"
                 }}
+                disabled={disabled}
                 android_ripple={{
                     color: 'light-grey',
                 }}

@@ -31,7 +31,7 @@ const Actions = () => {
 
     const onSelect = (id: number) => {
 
-        
+
 
         dispatch(todaySlice.actions.toggleAction(id))
     }
@@ -42,7 +42,6 @@ const Actions = () => {
                 <Text style={{fontSize: 24, fontWeight: "400"}}>
                     Today
                 </Text>
-                <Button title="Add" onPress={onAdd} />
             </View>
             <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                 <View style={{ flex: 2 }}>

@@ -1,11 +1,7 @@
 import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
-import { Text, View, FlatList, Button, Image } from "react-native"
+import { Text, View, Image } from "react-native"
 import { useDispatch } from "react-redux"
-import ActionInput from "../../components/ActionInput"
-import FullButton from "../../components/FullButton"
-import SelectActionBox from "../../components/SelectActionBox"
-import { selectActions } from "../../state/thunks/ActionsThunks"
 import { shadow5 } from "../../styles"
 
 
@@ -29,7 +25,6 @@ const Actions = () => {
                 <Text style={{fontSize: 24, fontWeight: "400"}}>
                     Spartan
                 </Text>
-                <Button title="Add" onPress={onAdd} />
             </View>
             <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                 <View style={{flex: 2, alignItems: "center"}}>
@@ -41,27 +36,7 @@ const Actions = () => {
                     <View style={{flexDirection: "row", justifyContent: "space-between", padding: 20}}>
                     </View>
                 </View>
-            </View>
-            
-           
-            
-            
-            {/* <View style={{
-                position: "absolute", 
-                bottom:60, 
-                width: "100%", 
-                left: 20
-            }}>
-                <FullButton 
-                    text={"Save"} 
-                    onPress={() => {
-                        alert("SAVE")
-                    }}
-
-                />
-            </View> */}
-            
-            
+            </View>            
         </View>
         
     )
