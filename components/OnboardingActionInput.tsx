@@ -1,42 +1,27 @@
 import { useNavigation } from "@react-navigation/native";
-import { View, TextInput } from "react-native"
+import { View, TextInput, Text, Pressable } from "react-native"
 import { useDispatch } from "react-redux";
 import { actionsSlice } from "../state/reducers/ActionsReducer";
 import { shadow5 } from "../styles";
 import SignToggle from "./SignToggle";
 
 
-type ActionInputProps = { 
+type OnboardingActionInputProps = { 
     score: string, 
     title: string,
-    id: number,
     positive: boolean, 
     placeholder?: string,
-    canChangeSign?: boolean,
+    onChangeScore,
+    onChangeTitle
 }
-const ActionInput = ({ 
+const OnboardingActionInput = ({ 
     score, 
     title,
-    id,
     positive,
-    placeholder = "Action Title" 
-}: ActionInputProps) => {
-
-    const dispatch = useDispatch();
-    const navigation = useNavigation();
-
-
-    const onChangeTitle = (title: string) => {
-        dispatch(actionsSlice.actions.updateAction({ key: 'title', value: title, id }))
-    }
-
-    const onChangeScore = (score: string) => {
-        dispatch(actionsSlice.actions.updateAction({ key: 'score', value: score, id }))
-    }
-
-    const onChangeSign = (positive: boolean) => {
-        dispatch(actionsSlice.actions.updateAction({ key: 'positive', value: positive, id }))
-    }
+    placeholder = "Action Title",
+    onChangeScore,
+    onChangeTitle
+}: OnboardingActionInputProps) => {
 
     return (
         <View style={{ flexDirection: "row", marginVertical: 5, ...shadow5 }}>
@@ -64,7 +49,7 @@ const ActionInput = ({
                 alignItems: "center"
             }}>
                 <View style={{ backgroundColor: "#efefef", justifyContent: "center", marginRight: 10, flex: 4, marginLeft: 1 }}>
-                    <SignToggle positive={positive} onSwitch={onChangeSign}  />
+                    <SignToggle positive={positive} onSwitch={null} disabled  />
                 </View>
                 <TextInput 
                     style={{flex: 6, fontSize: 15}}
@@ -79,4 +64,4 @@ const ActionInput = ({
 }
 
 
-export default ActionInput;
+export default OnboardingActionInput;

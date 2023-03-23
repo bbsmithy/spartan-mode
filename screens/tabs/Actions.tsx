@@ -56,7 +56,9 @@ const Actions = () => {
             </View>
             <FlatList
                 data={actions}
-                contentContainerStyle={{paddingTop: 20, paddingBottom: 100}}
+                automaticallyAdjustKeyboardInsets
+                keyExtractor={item => item.id}
+                contentContainerStyle={{paddingTop: 20, paddingBottom: 500}}
                 renderItem={({ item }) => {
                     return (
                         <ActionInput

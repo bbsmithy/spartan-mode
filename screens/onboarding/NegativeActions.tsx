@@ -1,6 +1,6 @@
 import { View, Text } from "react-native"
 import { useDispatch, useSelector } from "react-redux";
-import ActionInput from "../../components/ActionInput";
+import OnboardingActionInput from "../../components/OnboardingActionInput";
 import { setNegativeActionScore, setNegativeActionTitle } from "../../state/reducers/OnboardingReducer";
 import { getNegativeActionScore, getNegativeActionTitle } from "../../state/selectors/OnboardingSelectors";
 import { p } from "../../styles";
@@ -17,7 +17,7 @@ const NegativeActions = () => {
     return (
         <View>
             <Text style={[p, {marginBottom: 25}]}>Now create 1 negative action (e.g Drinking) and assign a negative score.</Text>
-            <ActionInput 
+            <OnboardingActionInput 
                 title={negativeActionTitle} 
                 score={negativeActionScore}
                 minus

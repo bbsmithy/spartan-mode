@@ -1,6 +1,6 @@
 import { View, Text } from "react-native"
 import { useDispatch, useSelector } from "react-redux";
-import ActionInput from "../../components/ActionInput";
+import OnboardingActionInput from "../../components/OnboardingActionInput";
 import { setActionOneScore, setActionOneTitle, setActionTwoScore, setActionTwoTitle } from "../../state/reducers/OnboardingReducer";
 import { getActionOneScore, getActionOneTitle, getActionTwoScore, getActionTwoTitle } from "../../state/selectors/OnboardingSelectors";
 import { p } from "../../styles";
@@ -19,11 +19,10 @@ const PositiveActions = () => {
     return (
         <View>
             <Text style={[p, {marginBottom: 25}]}>Lets get started by creating 2 positive actions (e.g Meditation, Gym) and assign a score to them.</Text>
-            <ActionInput 
+            <OnboardingActionInput
                 title={actionOneTitle} 
                 score={actionOneScore}
                 positive
-                canChangeSign={false}
                 onChangeTitle={(text) => {
                     dispatch(setActionOneTitle(text))
                 }} 
@@ -31,11 +30,10 @@ const PositiveActions = () => {
                     dispatch(setActionOneScore(text))
                 }}
             />
-            <ActionInput 
+            <OnboardingActionInput 
                 title={actionTwoTitle} 
                 score={actionTwoScore}
                 positive
-                canChangeSign={false}
                 onChangeTitle={(text) => {
                     dispatch(setActionTwoTitle(text))
                 }} 
