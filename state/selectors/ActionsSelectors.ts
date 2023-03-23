@@ -5,5 +5,5 @@ export const actionsList = (state: RootState) => {
 }
 
 export const hasEdits = (state: RootState) => {
-    return state.ActionsReducer.hasEdits
+    return state.ActionsReducer.actionIdsWithEdits.length > 0
 }

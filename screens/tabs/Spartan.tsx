@@ -27,10 +27,16 @@ const Actions = () => {
                 </Text>
             </View>
             <View style={{flexDirection: "column", display: "flex", flex: 1}}>
-                <View style={{flex: 2, alignItems: "center"}}>
-                    <View style={{ justifyContent: "center", alignItems: "center", ...shadow5, borderRadius: 80, height: 160, width: 160, backgroundColor: "white" }}>
-                        <Image source={require('../../assets/badges/4860.png')} resizeMode="contain" style={{height: 150, width: 150}} />
+                <View style={{flex: 2, flexDirection: 'row', justifyContent: 'center', alignItems: "center"}}>
+                    <View style={{flex: 3}}>
+                        <Text style={{fontSize: 40, fontWeight: "400"}}>
+                            85/100
+                        </Text>
+                        <Text style={{fontSize: 15, fontWeight: "400"}}>
+                            Avg Score (10 days)
+                        </Text>
                     </View>
+                    <Image source={require('../../assets/badges/4860.png')} resizeMode="contain" style={{height: 120}} />
                 </View>
                 <View style={{flex: 8}}>
                     <View style={{flexDirection: "row", justifyContent: "space-between", padding: 20}}>

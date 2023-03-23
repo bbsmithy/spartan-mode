@@ -5,7 +5,7 @@ export const actionsSlice = createSlice({
   initialState: {
     actionKeys: [],
     actions: {},
-    hasEdits: false
+    actionIdsWithEdits: []
   },
   reducers: {
     setActions: (state, action: PayloadAction<{title: string, score: number, id: number}[]>) => {
@@ -19,17 +19,20 @@ export const actionsSlice = createSlice({
     addAction: (state, action: PayloadAction<{title: string, score: number, id: number}>) => {
         state.actionKeys.push(action.payload.id)
         state.actions[`key`] = action.payload
-        state.hasEdits = true
     },
     updateAction: (state, action: PayloadAction<{key: string, value: number | string | boolean, id: number}>) => {
         state.actions[action.payload.id][action.payload.key] = action.payload.value
-        state.hasEdits = true
+        if (!state.actionIdsWithEdits.includes(action.payload.id)) {
+          state.actionIdsWithEdits = [...state.actionIdsWithEdits, action.payload.id]
+        }
     },
     removeAction: (state, action: PayloadAction<string>) => {
         const key = action.payload
         state.actionKeys = state.actionKeys.filter(k => k !== key)
         delete state.actions[key]
-        state.hasEdits = true
+    },
+    clearActionIdsWithEdits: (state) => {
+        state.actionIdsWithEdits = []
     }
   },
 })

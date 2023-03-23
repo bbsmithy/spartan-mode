@@ -24,7 +24,7 @@ const AddAction = () => {
 
 
     return (
-        <View style={{paddingHorizontal: 20, paddingTop: 60, paddingBottom: 20, flex: 1, backgroundColor: "white", justifyContent: "space-between"}}>
+        <View style={{ paddingTop: 40, paddingBottom: 20, flex: 1, backgroundColor: "white", justifyContent: "space-between"}}>
             <View>
                 <Pressable
                     android_ripple={{ color: 'darkgrey',  radius: 25 }} 
@@ -32,6 +32,8 @@ const AddAction = () => {
                         borderRadius: 25,
                         height: 50, 
                         width: 50,
+                        marginLeft: 5,
+
                         justifyContent: "center",
                         alignItems: "center"
                     }} 
@@ -39,24 +41,25 @@ const AddAction = () => {
                 >
                     <MaterialCommunityIcons name="arrow-left" size={24} color="black"  />
                 </Pressable>
-                <Text style={{fontSize: 23, marginBottom: 20}}>Add Action</Text>
-                <ActionInput 
-                    placeholder="Title"
-                    title={title}
-                    score={score}
-                    onChangeScore={(score) => {
-                        setScore(score)
-                    }}
-                    onChangeTitle={(title) => {
-                        setTitle(title)
-                    }}
-                />
+                <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
+                    <Text style={{fontSize: 23, marginBottom: 20}}>New Action</Text>
+                    <ActionInput 
+                        placeholder="Title"
+                        title={title}
+                        score={score}
+                    />
+                    
+                </View>
+            </View>
+            <View style={{paddingHorizontal: 20}}>
+            <FullButton
+                        
+                        text={"Add"}
+                        onPress={onAdd}
+                    />
             </View>
             
-            <FullButton
-                text={"Add"}
-                onPress={onAdd}
-            />
+            
         </View>
     )
 }

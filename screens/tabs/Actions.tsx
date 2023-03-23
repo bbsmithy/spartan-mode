@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux"
 import ActionInput from "../../components/ActionInput"
 import FullButton from "../../components/FullButton"
 import { actionsList, hasEdits } from "../../state/selectors/ActionsSelectors"
-import { getAllActions } from "../../state/thunks/ActionsThunks"
+import { getAllActions, saveChanges } from "../../state/thunks/ActionsThunks"
 import { red, shadow5 } from "../../styles"
 
 
@@ -25,12 +25,8 @@ const Actions = () => {
         navigation.navigate("AddAction")
     }
 
-    const onChangeScore = (score: string, id: number) => {
-        console.log("score: ", score, id)
-    }
-
-    const onChangeTitle = (title: string, id: number) => {
-        console.log("title: ", title, id)
+    const onSave = () => {
+        dispatch(saveChanges())
     }
 
     return (
@@ -69,29 +65,22 @@ const Actions = () => {
                             title={item.title}
                             positive={item.positive}
                             score={item.score.toString()}
-                            onChangeScore={onChangeScore}
-                            onChangeTitle={onChangeTitle}
                         />
                     )
                 }}
             />
-            {saveEnabled && (
-                <View style={{
-                    position: "absolute", 
-                    bottom:60, 
-                    width: "100%", 
-                    left: 20
-                }}>
-                    <FullButton 
-                        text={"Save"}
-                        disabled={!saveEnabled}
-                        onPress={() => {
-                            alert("SAVE")
-                        }}
-                    />
-                </View>
-            )}
-
+            <View style={{
+                position: "absolute", 
+                bottom:60, 
+                width: "100%", 
+                left: 20
+            }}>
+                <FullButton 
+                    text={"Save Changes"}
+                    disabled={!saveEnabled}
+                    onPress={onSave}
+                />
+            </View>
         </View>
     )
 }

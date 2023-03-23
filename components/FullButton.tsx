@@ -7,7 +7,7 @@ const FullButton = ({ text, onPress, disabled }) => {
         <View style={styles.nextBtn}>
             <Pressable
                 style={{
-                    backgroundColor: red,
+                    backgroundColor: disabled ? "#efefef" : red,
                     width: "100%",
                     justifyContent: "center",
                     padding: 20,
@@ -19,7 +19,7 @@ const FullButton = ({ text, onPress, disabled }) => {
                 }}
                 onPress={onPress}
             >
-                <Text style={{color: "white", fontWeight: "500", fontSize: 15}}>
+                <Text style={{color: disabled ? "gray" : "white", fontWeight: "500", fontSize: 15}}>
                     {text}
                 </Text>
             </Pressable>

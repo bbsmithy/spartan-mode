@@ -26,9 +26,6 @@ const SignToggle = ({ positive, onSwitch }) => {
 
 
 type ActionInputProps = { 
-    onChangeTitle: (title: string, id: number) => void, 
-    onChangeScore: (score: string, id: number) => void,
-    onChangeSign?: (positive: boolean, id: number) => void,
     score: string, 
     title: string,
     id: number,
