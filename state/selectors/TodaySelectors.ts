@@ -19,3 +19,16 @@ export const todaysScore = (state: RootState) => {
     }
     return totalScore
 }
+
+export const hasCompletedTodaysReport = (state: RootState) => {
+    if (state.TodayReducer.lastCompletedReportDate) {
+        const todaysDate = new Date();
+        const lastCompletedReportDate = new Date(state.TodayReducer.lastCompletedReportDate)
+        if (todaysDate.getDate() === lastCompletedReportDate.getDate() && todaysDate.getMonth() === lastCompletedReportDate.getMonth() && todaysDate.getFullYear() === lastCompletedReportDate.getFullYear()) {
+            return true
+        } else {
+            return false
+        }
+    }
+    return false
+}

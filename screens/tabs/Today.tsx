@@ -5,7 +5,7 @@ import FullButton from "../../components/FullButton"
 import SelectActionBox from "../../components/SelectActionBox"
 import { todaySlice } from "../../state/reducers/TodayReducer"
 import { actionsList } from "../../state/selectors/ActionsSelectors"
-import { selectedActionsList, todaysScore } from "../../state/selectors/TodaySelectors"
+import { hasCompletedTodaysReport, selectedActionsList, todaysScore } from "../../state/selectors/TodaySelectors"
 import { completeToday } from "../../state/thunks/TodayThunks"
 import Database from "../../database";
 
@@ -16,6 +16,10 @@ const Actions = () => {
     const actions = useSelector(actionsList)
     const selectedActions = useSelector(selectedActionsList)
     const currentScore = useSelector(todaysScore)
+    const isComplete = useSelector(hasCompletedTodaysReport)
+
+    console.log("")
+
 
     useEffect(() => {
         Database.logTableSchema('daily_reports')
@@ -83,6 +87,7 @@ const Actions = () => {
             }}>
                 <FullButton 
                     text={"Complete Day"}
+                    disabled={isComplete}
                     onPress={onSave}
                 />
             </View>
