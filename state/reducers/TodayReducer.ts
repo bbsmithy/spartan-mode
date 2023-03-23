@@ -3,7 +3,8 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 export const todaySlice = createSlice({
   name: 'today',
   initialState: {
-    selectedActions: []
+    selectedActions: [],
+    lastCompletedReportDate: null
   },
   reducers: {
     setSelectedActions: (state, action: PayloadAction<number[]>) => {
@@ -16,6 +17,9 @@ export const todaySlice = createSlice({
         } else {
             state.selectedActions.push(action.payload)
         }
+    },
+    setLastCompletedReportDate: (state, action: PayloadAction<string>) => {
+        state.lastCompletedReportDate = action.payload
     }
   },
 })

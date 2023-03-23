@@ -73,8 +73,11 @@ const Actions = () => {
             />
             <View style={{
                 position: "absolute", 
-                bottom:60, 
-                width: "100%", 
+                bottom: 0,
+                paddingBottom: 60,
+                paddingTop: 20,
+                width: "100%",
+                backgroundColor: 'white',
                 left: 20
             }}>
                 <FullButton 

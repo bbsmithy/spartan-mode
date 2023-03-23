@@ -13,12 +13,11 @@ export const INSERT_ACTION = `INSERT INTO actions (title, score, positive) VALUE
 export const CREATE_DAILY_REPORTS_TABLE = `CREATE TABLE IF NOT EXISTS daily_reports (
     id INTEGER PRIMARY KEY NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    actions JSONB NOT NULL,
+    actions TEXT NOT NULL,
     total_score INTEGER NOT NULL
 );`
 export const DELETE_DAILY_REPORTS_TABLE = `DROP TABLE daily_reports`
 export const INSERT_DAILY_REPORT = `INSERT INTO daily_reports (actions, total_score) VALUES (?, ?) `
-
 
 
 class Database {

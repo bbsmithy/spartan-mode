@@ -1,44 +1,46 @@
-import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
-import { Text, View, FlatList, Button } from "react-native"
+import { Text, View, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
-import ActionInput from "../../components/ActionInput"
 import FullButton from "../../components/FullButton"
 import SelectActionBox from "../../components/SelectActionBox"
 import { todaySlice } from "../../state/reducers/TodayReducer"
 import { actionsList } from "../../state/selectors/ActionsSelectors"
 import { selectedActionsList, todaysScore } from "../../state/selectors/TodaySelectors"
+import { completeToday } from "../../state/thunks/TodayThunks"
+import Database from "../../database";
 
 
 const Actions = () => {
 
-    const navigation = useNavigation()
     const dispatch = useDispatch()
     const actions = useSelector(actionsList)
     const selectedActions = useSelector(selectedActionsList)
     const currentScore = useSelector(todaysScore)
 
-    console.log("selected actions: ", selectedActions)
-
-
     useEffect(() => {
+        Database.logTableSchema('daily_reports')
         // dispatch(selectActions({ title: "YOYO", score: '50' }))
     }, [])
 
-    const onAdd = () => {
-        navigation.navigate("AddAction")
+    const onSave = () => {
+        dispatch(
+            completeToday({ 
+                actions: selectedActions, 
+                total_score: currentScore 
+            })
+        )
     }
 
     const onSelect = (id: number) => {
-
-
-
         dispatch(todaySlice.actions.toggleAction(id))
     }
 
     return (
-        <View style={{ padding: 20, marginTop: 40, height: "100%" }}>
-            <View style={{flexDirection: 'row', justifyContent: "space-between"}}>
+        <View style={{ marginTop: 40, height: "100%" }}>
+
+            
+            <View style={{padding: 20, flex: 1}}>
+            <View>
                 <Text style={{fontSize: 24, fontWeight: "400"}}>
                     Today
                 </Text>
@@ -52,11 +54,9 @@ const Actions = () => {
                 <View style={{ flex: 8 }}>
                     <FlatList
                         data={actions}
-                        contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 100}}
+                        contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 200}}
                         renderItem={({ item }) => {
-
                             const selected = selectedActions.find((id) => id === item.id)
-
                             return (
                                 <SelectActionBox 
                                     title={item.title} 
@@ -70,6 +70,21 @@ const Actions = () => {
                         }}
                     />
                 </View>
+            </View>
+            </View>
+            <View style={{
+                position: "absolute", 
+                bottom: 0,
+                paddingBottom: 50,
+                paddingTop: 10,
+                paddingHorizontal: 20,
+                width: "100%",
+                backgroundColor: 'white',
+            }}>
+                <FullButton 
+                    text={"Complete Day"}
+                    onPress={onSave}
+                />
             </View>
         </View>
         
