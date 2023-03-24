@@ -38,23 +38,40 @@ const Actions = () => {
                 </Text>
                 <NewButton onAdd={onAdd} />
             </View>
-            <FlatList
-                data={actions}
-                automaticallyAdjustKeyboardInsets
-                keyExtractor={item => item.id}
-                contentContainerStyle={{paddingTop: 20, paddingBottom: 500}}
-                renderItem={({ item }) => {
-                    return (
-                        <ActionInput
-                            key={item.id} 
-                            id={item.id}
-                            title={item.title}
-                            positive={item.positive}
-                            score={item.score.toString()}
+            {actions.length > 0 && (
+                <FlatList
+                    data={actions}
+                    automaticallyAdjustKeyboardInsets
+                    keyExtractor={item => item.id}
+                    contentContainerStyle={{paddingTop: 20, paddingBottom: 300}}
+                    renderItem={({ item }) => {
+                        return (
+                            <ActionInput
+                                key={item.id} 
+                                id={item.id}
+                                title={item.title}
+                                positive={item.positive}
+                                score={item.score.toString()}
+                            />
+                        )
+                    }}
+                />
+            )}
+            {actions.length === 0 && (
+               <View style={{justifyContent: "center", padding: 40, marginTop: "35%" }}>
+                    <Text style={{fontSize: 20, textAlign: "center", color: "gray"}}>
+                        You have no actions yet 😐
+                    </Text>
+                    <View style={{width: "100%", justifyContent: "center", alignItems: "center", marginTop: 20 }}>
+                        <NewButton 
+                            title="Create Action" 
+                            onAdd={() => {
+                                navigation.navigate("AddAction")
+                            }} 
                         />
-                    )
-                }}
-            />
+                    </View>
+                </View>
+            )}
             <View style={{
                 position: "absolute", 
                 bottom: 0,

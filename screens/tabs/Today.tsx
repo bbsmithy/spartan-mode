@@ -33,12 +33,13 @@ const Actions = () => {
     }, [])
 
     const onSave = () => {
-        dispatch(
-            completeToday({ 
-                actions: selectedActions, 
-                total_score: currentScore 
-            })
-        )
+        const selectedActionData = actions.find((action) => {
+            return selectedActions.find((id) => id === action.id)
+        })
+        dispatch(completeToday({ 
+            actions: selectedActionData,  
+            total_score: currentScore
+        }))
     }
 
     const onReset = () => {
@@ -86,6 +87,7 @@ const Actions = () => {
                                             title={item.title} 
                                             score={item.score}
                                             positive={item.positive}
+                                            disabled={isComplete}
                                             checked={selected}
                                             id={item.id} 
                                             onPress={onSelect}

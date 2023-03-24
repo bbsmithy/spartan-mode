@@ -1,18 +1,21 @@
 import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
 import { Text, View, Image } from "react-native"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { getDailyReports } from "../../state/thunks/SpartanThunks"
 import { shadow5 } from "../../styles"
+import { dailyReportsList } from "../../state/selectors/SpartanSelectors"
 
 
 const Actions = () => {
 
     const navigation = useNavigation()
     const dispatch = useDispatch()
+    const dailyReports = useSelector(dailyReportsList)
 
 
     useEffect(() => {
-        // dispatch(selectActions())
+        dispatch(getDailyReports())
     }, [])
 
     const onAdd = () => {
@@ -27,7 +30,18 @@ const Actions = () => {
                 </Text>
             </View>
             <View style={{flexDirection: "column", display: "flex", flex: 1}}>
-                <View style={{flex: 2, flexDirection: 'row', justifyContent: 'space-between', alignItems: "center"}}>
+                <View style={{
+                    flex: 2,
+                    marginTop: 25,
+                    flexDirection: 'row', 
+                    justifyContent: 'space-between', 
+                    backgroundColor: "white", 
+                    borderWidth: 1,
+                    borderColor: "#e0e0e0", 
+                    borderRadius: 15, 
+                    paddingVertical: 15, 
+                    alignItems: "center"
+                }}>
                     <View style={{flex: 2, justifyContent: "center", alignItems: "center"}}>
                         <Text style={{fontSize: 35, fontWeight: "400"}}>
                             85/100
@@ -41,7 +55,20 @@ const Actions = () => {
                     </View>
                 </View>
                 <View style={{flex: 8}}>
-                    <View style={{flexDirection: "row", justifyContent: "space-between", padding: 20}}>
+                    <View 
+                        style={{
+                            flexDirection: "row", 
+                            justifyContent: "space-between", 
+                            padding: 20, 
+                            ...shadow5, 
+                            backgroundColor: "white",
+                            borderRadius: 15,
+                            marginTop: 25
+                        }}
+                    >
+                        <Text>
+                            {JSON.stringify(dailyReports)}
+                        </Text>
                     </View>
                 </View>
             </View>            

@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-const initialState = {
+
+type TodayState = { selectedActions: number[], lastCompletedReportDate: string | null }
+const initialState: TodayState = {
     selectedActions: [],
     lastCompletedReportDate: null
 }

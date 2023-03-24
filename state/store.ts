@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import OnboardingReducer from './reducers/OnboardingReducer'
 import ActionsReducer from './reducers/ActionsReducer'
 import TodayReducer from './reducers/TodayReducer'
+import SpartanReducer from './reducers/SpartanReducer'
 import { FLUSH, REGISTER, PAUSE, REHYDRATE, PERSIST, PURGE, persistReducer, persistStore } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -21,7 +22,8 @@ const persistConfig = {
 const reducer = combineReducers({
   OnboardingReducer,
   ActionsReducer,
-  TodayReducer
+  TodayReducer,
+  SpartanReducer
 })
 
 const persistedReducer = persistReducer(persistConfig, reducer)

@@ -3,14 +3,26 @@ import { View, Text, StyleSheet, Pressable } from "react-native"
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import { shadow5 } from "../styles";
 
-type SelectActionBoxProps = { title: string, score: number, positive: number, checked: boolean, id: number, onPress: (id: number) => void } 
-const SelectActionBox = ({ title, score, onPress, id, checked, positive }: SelectActionBoxProps) => {
+type SelectActionBoxProps = { 
+    title: string, 
+    score: number, 
+    positive: number, 
+    checked: boolean, 
+    disabled: boolean,
+    id: number, 
+    onPress: (id: number) => void 
+} 
+const SelectActionBox = ({ title, score, onPress, id, checked, positive, disabled }: SelectActionBoxProps) => {
 
-    const press = () => onPress(id)
+    const press = () => {
+        if (!disabled) onPress(id)
+    }
+
+    const disabledStyle = disabled ? {backgroundColor: "#efefef"}:{}
 
     return (
         <View style={styles.container}>
-            <Pressable style={styles.selectActionBox} android_ripple={{ color: positive ? 'green' : 'red'  }}  onPress={press}>
+            <Pressable style={[styles.selectActionBox, disabledStyle]} android_ripple={{ color: positive ? 'green' : 'red'  }} disabled={disabled}  onPress={press}>
                 <View style={{flex: 1}}>
                     <Text style={{fontSize: 20, fontWeight: "600"}}>{!positive && "-"}{score}</Text>
                 </View>
