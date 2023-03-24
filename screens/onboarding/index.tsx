@@ -42,7 +42,7 @@ export default function OnboardingScreen() {
 
     const skip = () => {
         
-        Database.resetDatabase()
+        Database.seedDatabase()
         // set onbaording complete
         // dispatch()
     }

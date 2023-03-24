@@ -1,11 +1,10 @@
 import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
-import { Text, View, Image, FlatList, Pressable } from "react-native"
+import { Text, View, Image, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { getDailyReports } from "../../state/thunks/SpartanThunks"
 import { shadow5 } from "../../styles"
 import { dailyReportsList } from "../../state/selectors/SpartanSelectors"
-import { MaterialCommunityIcons } from "@expo/vector-icons"
 import DailyReportItem from "../../components/DailyReportItem"
 
 
@@ -38,8 +37,8 @@ const Actions = () => {
                     flexDirection: 'row', 
                     justifyContent: 'space-between', 
                     backgroundColor: "white", 
-                    borderWidth: 1,
-                    borderColor: "#e0e0e0", 
+                    // borderWidth: 1,
+                    // borderColor: "#e0e0e0", 
                     borderRadius: 15, 
                     paddingVertical: 15, 
                     alignItems: "center"
@@ -63,6 +62,7 @@ const Actions = () => {
                         keyExtractor={item => item.id}
                         contentContainerStyle={{ paddingBottom: 300, paddingHorizontal: 5}}
                         renderItem={({ item }) => {
+                            console.log("ITEM: ", item)
                             return (
                                 <DailyReportItem item={item} />
                             )}

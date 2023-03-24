@@ -19,7 +19,7 @@ const DailyReportItem = ({ item }) => {
             ...shadow5,
             backgroundColor: "white",
             borderRadius: 15,
-            marginTop: 25, overflow: "hidden",
+            marginTop: 15, overflow: "hidden",
         }}>
             <Pressable android_ripple={{color: "light-gray"}} style={{
                 flexDirection: "row",
@@ -27,20 +27,20 @@ const DailyReportItem = ({ item }) => {
                 alignItems: "center",
                 padding: 20
             }}>
-                <View>
+                <View style={{flex: 5}}>
                     <Text style={{fontSize: 15, fontWeight: "400"}}>
                         {displayDate(item.created_at)}
                     </Text>
                 </View>
-                <View>
-                    <Text style={{fontSize: 15, fontWeight: "500"}}>
+                <View style={{flex: 2}}>
+                    <Text style={{fontSize: 13, fontWeight: "500"}}>
                         {item.total_score}/100
                     </Text>
-                    <View style={{height: 10, borderRadius: 5, backgroundColor: "gray", marginTop: 3}}>
-                        <View style={{height: 10, borderRadius: 5, backgroundColor: "green", width: `${item.total_score}%`}} />
+                    <View style={{height: 8, borderRadius: 5, backgroundColor: "gray", marginTop: 3}}>
+                        <View style={{height: 8, borderRadius: 5, backgroundColor: "green", width: `${item.total_score}%`}} />
                     </View>
                 </View>
-                <View>
+                <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
                     <MaterialCommunityIcons name="chevron-right" size={24} color="black" />
                 </View>
             </Pressable>
