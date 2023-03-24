@@ -1,7 +1,10 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import OnboardingReducer from './reducers/OnboardingReducer'
 import ActionsReducer from './reducers/ActionsReducer'
 import TodayReducer from './reducers/TodayReducer'
+import { FLUSH, REGISTER, PAUSE, REHYDRATE, PERSIST, PURGE, persistReducer, persistStore } from 'redux-persist';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const logger = store => next => action => {
   console.log('dispatching', action)
@@ -10,15 +13,26 @@ const logger = store => next => action => {
   return result
 }
 
-const store = configureStore({
-  reducer: {
-    OnboardingReducer,
-    ActionsReducer,
-    TodayReducer
-  },
-  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
+const persistConfig = {
+  key: 'root',
+  storage: AsyncStorage,
+}
+
+const reducer = combineReducers({
+  OnboardingReducer,
+  ActionsReducer,
+  TodayReducer
 })
 
-export type RootState = ReturnType<typeof store.getState>;
+const persistedReducer = persistReducer(persistConfig, reducer)
 
-export default store
+export type RootState = ReturnType<typeof store.getState>;
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: {
+      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+    }
+  }).concat(logger)
+})
+export const persistor = persistStore(store)

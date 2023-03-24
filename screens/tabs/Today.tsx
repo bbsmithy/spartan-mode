@@ -44,42 +44,42 @@ const Actions = () => {
 
             
             <View style={{padding: 20, flex: 1}}>
-            <View>
-                <Text style={{fontSize: 24, fontWeight: "400"}}>
-                    Today
-                </Text>
-            </View>
-            <View style={{flexDirection: "column", display: "flex", flex: 1}}>
-                <View style={{ flex: 2 }}>
-                    <View style={{justifyContent: "center", padding: 40 }}>
-                        <Text style={{fontSize: 40, textAlign: "center"}}>{currentScore}/100</Text>
+                <View>
+                    <Text style={{fontSize: 24, fontWeight: "400"}}>
+                        Today
+                    </Text>
+                </View>
+                <View style={{flexDirection: "column", display: "flex", flex: 1}}>
+                    <View style={{ flex: 2 }}>
+                        <View style={{justifyContent: "center", padding: 40 }}>
+                            <Text style={{fontSize: 40, textAlign: "center"}}>{currentScore}/100</Text>
+                        </View>
+                    </View>
+                    <View style={{ flex: 8 }}>
+                        <FlatList
+                            data={actions}
+                            contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 200}}
+                            renderItem={({ item }) => {
+                                const selected = selectedActions.find((id) => id === item.id)
+                                return (
+                                    <SelectActionBox 
+                                        title={item.title} 
+                                        score={item.score}
+                                        positive={item.positive}
+                                        checked={selected}
+                                        id={item.id} 
+                                        onPress={onSelect}
+                                    />
+                                )
+                            }}
+                        />
                     </View>
                 </View>
-                <View style={{ flex: 8 }}>
-                    <FlatList
-                        data={actions}
-                        contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 200}}
-                        renderItem={({ item }) => {
-                            const selected = selectedActions.find((id) => id === item.id)
-                            return (
-                                <SelectActionBox 
-                                    title={item.title} 
-                                    score={item.score}
-                                    positive={item.positive}
-                                    checked={selected}
-                                    id={item.id} 
-                                    onPress={onSelect}
-                                />
-                            )
-                        }}
-                    />
-                </View>
-            </View>
             </View>
             <View style={{
                 position: "absolute", 
                 bottom: 0,
-                paddingBottom: 50,
+                paddingBottom: 60,
                 paddingTop: 10,
                 paddingHorizontal: 20,
                 width: "100%",
