@@ -12,7 +12,8 @@ type OnboardingActionInputProps = {
     positive: boolean, 
     placeholder?: string,
     onChangeScore,
-    onChangeTitle
+    onChangeTitle,
+    onChangeSign
 }
 const OnboardingActionInput = ({ 
     score, 
@@ -20,7 +21,8 @@ const OnboardingActionInput = ({
     positive,
     placeholder = "Action Title",
     onChangeScore,
-    onChangeTitle
+    onChangeTitle,
+    onChangeSign
 }: OnboardingActionInputProps) => {
 
     return (
@@ -49,7 +51,7 @@ const OnboardingActionInput = ({
                 alignItems: "center"
             }}>
                 <View style={{ backgroundColor: "#efefef", justifyContent: "center", marginRight: 10, flex: 4, marginLeft: 1 }}>
-                    <SignToggle positive={positive} onSwitch={null} disabled  />
+                    <SignToggle positive={positive} onSwitch={onChangeSign || null} disabled={!onChangeSign}  />
                 </View>
                 <TextInput 
                     style={{flex: 6, fontSize: 15}}

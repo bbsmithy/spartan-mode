@@ -22,7 +22,7 @@ function TabBarIcon(props: {
 
 const TabNavigator = () => {
     return (
-        <Tabs.Navigator sceneContainerStyle={{backgroundColor: "white"}}>
+        <Tabs.Navigator initialRouteName="Today" sceneContainerStyle={{backgroundColor: "white"}}>
             <Tabs.Screen 
                 name="Actions" 
                 component={Actions}
@@ -35,7 +35,7 @@ const TabNavigator = () => {
                 }}
             />
             <Tabs.Screen 
-                name="Today" 
+                name="Today"
                 component={Today}
                 options={{
                     headerShown: false,

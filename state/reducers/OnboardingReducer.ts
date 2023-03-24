@@ -5,9 +5,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 // which detects changes to a "draft state" and produces a brand new
 // immutable state based off those changes
 
-export const onboardingSlice = createSlice({
-  name: 'onboarding',
-  initialState: {
+const initialState = {
     screenIndex: 0,
     actionOneTitle: "",
     actionTwoTitle: "",
@@ -16,7 +14,11 @@ export const onboardingSlice = createSlice({
     negativeActionScore: "",
     negativeActionTitle: "",
     complete: false
-  },
+  }
+
+export const onboardingSlice = createSlice({
+  name: 'onboarding',
+  initialState,
   reducers: {
     setScreenIndex: (state, action: PayloadAction<number>) => {
         state.screenIndex = action.payload
@@ -41,6 +43,9 @@ export const onboardingSlice = createSlice({
     },
     setComplete: (state) => {
         state.complete = true
+    },
+    reset: (state) => {
+        state = initialState
     }
   },
 })

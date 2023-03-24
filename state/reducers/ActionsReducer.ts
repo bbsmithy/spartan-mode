@@ -1,12 +1,14 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+const initialState = {
+  actionKeys: [],
+  actions: {},
+  actionIdsWithEdits: []
+}
+
 export const actionsSlice = createSlice({
   name: 'actions',
-  initialState: {
-    actionKeys: [],
-    actions: {},
-    actionIdsWithEdits: []
-  },
+  initialState,
   reducers: {
     setActions: (state, action: PayloadAction<{title: string, score: number, id: number}[]>) => {
         const actions = action.payload
@@ -33,6 +35,9 @@ export const actionsSlice = createSlice({
     },
     clearActionIdsWithEdits: (state) => {
         state.actionIdsWithEdits = []
+    },
+    reset: (state) => {
+      state = initialState
     }
   },
 })

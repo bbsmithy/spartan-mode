@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { Text, View, FlatList } from "react-native"
+import { Text, View, FlatList, Button } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import FullButton from "../../components/FullButton"
 import SelectActionBox from "../../components/SelectActionBox"
@@ -8,6 +8,8 @@ import { actionsList } from "../../state/selectors/ActionsSelectors"
 import { hasCompletedTodaysReport, selectedActionsList, todaysScore } from "../../state/selectors/TodaySelectors"
 import { completeToday } from "../../state/thunks/TodayThunks"
 import Database from "../../database";
+import { onboardingSlice } from "../../state/reducers/OnboardingReducer"
+import { actionsSlice } from "../../state/reducers/ActionsReducer"
 
 
 const Actions = () => {
@@ -35,6 +37,12 @@ const Actions = () => {
         )
     }
 
+    const onReset = () => {
+        dispatch(todaySlice.actions.reset())
+        dispatch(onboardingSlice.actions.reset())
+        dispatch(actionsSlice.actions.reset())
+    }
+
     const onSelect = (id: number) => {
         dispatch(todaySlice.actions.toggleAction(id))
     }
@@ -44,10 +52,16 @@ const Actions = () => {
 
             
             <View style={{padding: 20, flex: 1}}>
-                <View>
+                <View style={{flexDirection: "row", justifyContent: "space-between"}}>
                     <Text style={{fontSize: 24, fontWeight: "400"}}>
                         Today
                     </Text>
+                    {process.env.NODE_ENV === "development" && (
+                        <Button
+                            title="Reset"
+                            onPress={onReset}
+                        />
+                    )}
                 </View>
                 <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                     <View style={{ flex: 2 }}>
@@ -87,7 +101,7 @@ const Actions = () => {
             }}>
                 <FullButton 
                     text={"Complete Day"}
-                    disabled={isComplete}
+                    disabled={isComplete || actions.length === 0}
                     onPress={onSave}
                 />
             </View>

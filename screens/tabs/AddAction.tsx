@@ -5,6 +5,7 @@ import { View, Text, Pressable } from "react-native"
 import { useDispatch } from "react-redux";
 import ActionInput from "../../components/ActionInput";
 import FullButton from "../../components/FullButton";
+import OnboardingActionInput from "../../components/OnboardingActionInput";
 import { addAction } from "../../state/thunks/ActionsThunks";
 
 const AddAction = () => {
@@ -13,9 +14,13 @@ const AddAction = () => {
     const navigation = useNavigation();
     const [score, setScore] = useState("");
     const [title, setTitle] = useState("");
+    const [positive, setPositive] = useState(true);
 
     const onAdd = () => {
-        dispatch(addAction({ title, score }))
+        dispatch(addAction({ title, score, positive }))
+        navigation.goBack();
+
+        
     }
 
     const onBack = () => {
@@ -43,10 +48,16 @@ const AddAction = () => {
                 </Pressable>
                 <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
                     <Text style={{fontSize: 23, marginBottom: 20}}>New Action</Text>
-                    <ActionInput 
+                    <OnboardingActionInput
                         placeholder="Title"
                         title={title}
                         score={score}
+                        positive={positive}
+                        onChangeTitle={setTitle}
+                        onChangeScore={setScore}
+                        onChangeSign={() => {
+                            setPositive(!positive)
+                        }}
                     />
                     
                 </View>
