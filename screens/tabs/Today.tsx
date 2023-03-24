@@ -1,6 +1,8 @@
 import { useEffect } from "react"
-import { Text, View, FlatList, Button } from "react-native"
+import { Text, View, FlatList, Button, Pressable } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
+import { useNavigation } from "@react-navigation/native"
+
 import FullButton from "../../components/FullButton"
 import SelectActionBox from "../../components/SelectActionBox"
 import { todaySlice } from "../../state/reducers/TodayReducer"
@@ -11,16 +13,18 @@ import Database from "../../database";
 import { onboardingSlice } from "../../state/reducers/OnboardingReducer"
 import { actionsSlice } from "../../state/reducers/ActionsReducer"
 
+import NewButton from "../../components/NewButton"
+
 
 const Actions = () => {
 
     const dispatch = useDispatch()
+    const navigation = useNavigation()
     const actions = useSelector(actionsList)
     const selectedActions = useSelector(selectedActionsList)
     const currentScore = useSelector(todaysScore)
     const isComplete = useSelector(hasCompletedTodaysReport)
 
-    console.log("")
 
 
     useEffect(() => {
@@ -71,23 +75,41 @@ const Actions = () => {
                         </View>
                     </View>
                     <View style={{ flex: 8 }}>
-                        <FlatList
-                            data={actions}
-                            contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 200}}
-                            renderItem={({ item }) => {
-                                const selected = selectedActions.find((id) => id === item.id)
-                                return (
-                                    <SelectActionBox 
-                                        title={item.title} 
-                                        score={item.score}
-                                        positive={item.positive}
-                                        checked={selected}
-                                        id={item.id} 
-                                        onPress={onSelect}
+                        {actions.length > 0 && (
+                            <FlatList
+                                data={actions}
+                                contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 200}}
+                                renderItem={({ item }) => {
+                                    const selected = selectedActions.find((id) => id === item.id)
+                                    return (
+                                        <SelectActionBox 
+                                            title={item.title} 
+                                            score={item.score}
+                                            positive={item.positive}
+                                            checked={selected}
+                                            id={item.id} 
+                                            onPress={onSelect}
+                                        />
+                                    )
+                                }}
+                            />
+                        )}
+                        {actions.length === 0 && (
+                            <View style={{justifyContent: "center", padding: 40 }}>
+                                <Text style={{fontSize: 20, textAlign: "center", color: "gray"}}>
+                                    You have no actions yet 😐
+                                </Text>
+                                <View style={{width: "100%", justifyContent: "center", alignItems: "center", marginTop: 20 }}>
+                                    <NewButton 
+                                        title="Create Action" 
+                                        onAdd={() => {
+                                            navigation.navigate("AddAction")
+                                        }} 
                                     />
-                                )
-                            }}
-                        />
+                                </View>
+                            </View>
+                        )}
+                        
                     </View>
                 </View>
             </View>

@@ -5,6 +5,7 @@ import { Text, View, FlatList, StyleSheet, Pressable } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import ActionInput from "../../components/ActionInput"
 import FullButton from "../../components/FullButton"
+import NewButton from "../../components/NewButton"
 import { actionsList, hasEdits } from "../../state/selectors/ActionsSelectors"
 import { getAllActions, saveChanges } from "../../state/thunks/ActionsThunks"
 import { red, shadow5 } from "../../styles"
@@ -35,24 +36,7 @@ const Actions = () => {
                 <Text style={{fontSize: 24, fontWeight: "400"}}>
                     Actions
                 </Text>
-                <Pressable 
-                    onPress={onAdd}
-                    android_ripple={{color: "light-grey"}}
-                    style={{ 
-                        flexDirection: "row", 
-                        justifyContent: "center", 
-                        alignItems: "center",
-                        backgroundColor: red,
-                        padding: 5,
-                        borderRadius: 8,
-                        ...shadow5
-                    }}
-                >
-                    <MaterialCommunityIcons name="plus-circle" size={16} color="white" />
-                    <Text style={{fontSize: 15, color: "white", marginLeft: 5}}>
-                        New
-                    </Text>
-                </Pressable>
+                <NewButton onAdd={onAdd} />
             </View>
             <FlatList
                 data={actions}
