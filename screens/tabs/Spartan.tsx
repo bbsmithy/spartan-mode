@@ -6,6 +6,7 @@ import { getDailyReports } from "../../state/thunks/SpartanThunks"
 import { shadow5 } from "../../styles"
 import { dailyReportsList } from "../../state/selectors/SpartanSelectors"
 import { MaterialCommunityIcons } from "@expo/vector-icons"
+import DailyReportItem from "../../components/DailyReportItem"
 
 
 const Actions = () => {
@@ -63,37 +64,7 @@ const Actions = () => {
                         contentContainerStyle={{ paddingBottom: 300, paddingHorizontal: 5}}
                         renderItem={({ item }) => {
                             return (
-                                <View style={{
-                                    ...shadow5,
-                                    backgroundColor: "white",
-                                    borderRadius: 15,
-                                    marginTop: 25, overflow: "hidden",
-                                }}>
-                                
-                                <Pressable android_ripple={{color: "light-gray"}} style={{
-                                    flexDirection: "row",
-                                    justifyContent: "space-between",
-                                    alignItems: "center",
-                                    padding: 20
-                                }}>
-                                    <View>
-                                        <Text style={{fontSize: 15, fontWeight: "400"}}>
-                                            {new Date(item.created_at).toDateString()}
-                                        </Text>
-                                    </View>
-                                    <View>
-                                        <Text style={{fontSize: 15, fontWeight: "500"}}>
-                                            {item.total_score}/100
-                                        </Text>
-                                        <View style={{height: 10, borderRadius: 5, backgroundColor: "light-gray", marginTop: 3}}>
-                                            <View style={{height: 10, borderRadius: 5, backgroundColor: "green", width: `${item.total_score}%`}} />
-                                        </View>
-                                    </View>
-                                    <View>
-                                        <MaterialCommunityIcons name="chevron-right" size={24} color="black" />
-                                    </View>
-                                </Pressable>
-                                </View>
+                                <DailyReportItem item={item} />
                             )}
                         }
                     />
