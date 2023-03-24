@@ -37,7 +37,9 @@ export const actionsSlice = createSlice({
         state.actionIdsWithEdits = []
     },
     reset: (state) => {
-      state = initialState
+      state.actionKeys = []
+      state.actions = {}
+      state.actionIdsWithEdits = []
     }
   },
 })

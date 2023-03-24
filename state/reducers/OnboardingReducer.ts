@@ -45,7 +45,14 @@ export const onboardingSlice = createSlice({
         state.complete = true
     },
     reset: (state) => {
-        state = initialState
+        state.screenIndex = 0
+        state.actionOneTitle = ""
+        state.actionTwoTitle = ""
+        state.actionOneScore = ""
+        state.actionTwoScore = ""
+        state.negativeActionScore = ""
+        state.negativeActionTitle = ""
+        state.complete = false
     }
   },
 })

@@ -41,6 +41,7 @@ const Actions = () => {
         dispatch(todaySlice.actions.reset())
         dispatch(onboardingSlice.actions.reset())
         dispatch(actionsSlice.actions.reset())
+        Database.resetDatabase()
     }
 
     const onSelect = (id: number) => {

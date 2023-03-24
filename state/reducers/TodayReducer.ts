@@ -24,7 +24,8 @@ export const todaySlice = createSlice({
         state.lastCompletedReportDate = action.payload
     },
     reset: (state) => {
-        state = initialState
+        state.lastCompletedReportDate = null
+        state.selectedActions = []
     }
   },
 })
