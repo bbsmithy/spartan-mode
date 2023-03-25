@@ -17,10 +17,8 @@ export const completeToday = ({ actions, total_score }:{ actions:[], total_score
 
 export const updateToday = ({ actions, total_score, id } : { actions:[], total_score: number, id:number }) => async (dispatch) => {
     Database.db.transaction(tx => {
-        tx.executeSql('UPDATE daily_reports SET actions=?, total_score=? WHERE id=? RETURNING *', [JSON.stringify(actions), total_score, id], (_, {rows: { _array }}) => {
-            
-            console.log("update", _array[0])
-            
+        tx.executeSql('UPDATE daily_reports SET actions=?, total_score=? WHERE id=?', [JSON.stringify(actions), total_score, id])
+        tx.executeSql('SELECT * FROM daily_reports WHERE id=?', [id], (_, {rows: { _array }}) => {
             dispatch(todaySlice.actions.setLastCompletedReport(_array[0]))
             dispatch(getDailyReports(10))
         })
