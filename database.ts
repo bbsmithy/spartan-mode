@@ -87,7 +87,11 @@ class Database {
             for (let index = 0; index < 10; index++) {
                 const date = new Date();
                 date.setDate(date.getDate() - index);
-                tx.executeSql(SEED_DAILY_REPORT_ROW, [JSON.stringify({}), Math.round(Math.random() * 100), date.getTime()])
+                tx.executeSql(SEED_DAILY_REPORT_ROW, [
+                    JSON.stringify([{id: 1, title: "Gym", score: 20, created_at: "2023-03-24 22:21:39"}]), 
+                    Math.round(Math.random() * 100), 
+                    date.getTime()
+                ])
             }
         }, (err) => {
             console.log({ err })

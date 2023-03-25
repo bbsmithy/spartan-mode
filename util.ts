@@ -5,3 +5,10 @@ export const isToday = (date: string) => {
         d.getMonth() === today.getMonth() &&
         d.getFullYear() === today.getFullYear()
 }
+
+export const displayDate = (date: string) => {
+    if (isToday(date)) {
+        return "Today"
+    }
+    return new Date(date).toDateString()
+}
