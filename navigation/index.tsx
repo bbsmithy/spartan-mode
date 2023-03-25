@@ -5,6 +5,7 @@ import OnboardingScreen from '../screens/onboarding';
 import TabNavigator from '../screens/tabs';
 import { isOnboardingComplete } from '../state/selectors/OnboardingSelectors';
 import AddAction from '../screens/tabs/AddAction';
+import DailyReport from '../screens/tabs/DailyReport';
 
 const Stack = createNativeStackNavigator();
 
@@ -38,6 +39,14 @@ const Navigation = () => {
                             headerShown: false,
                             presentation: "modal"
                             
+                        }}
+                    />
+                    <Stack.Screen
+                        name='DailyReport'
+                        component={DailyReport}
+                        options={{
+                            headerShown: false,
+                            presentation: "modal"
                         }}
                     />
                 </>

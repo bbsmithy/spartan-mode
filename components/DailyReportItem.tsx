@@ -1,19 +1,18 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons"
+import { useNavigation } from "@react-navigation/native"
 import { Text } from "react-native"
 import { Pressable, View } from "react-native"
 import { shadow5 } from "../styles"
-import { isToday } from "../util"
-
-
-
-const displayDate = (date: string) => {
-    if (isToday(date)) {
-        return "Today"
-    }
-    return new Date(date).toDateString()
-}
+import { displayDate } from "../util"
 
 const DailyReportItem = ({ item }) => {
+
+    const navigation = useNavigation()
+
+    const press = () => {
+        navigation.navigate("DailyReport", { report: item })
+    }
+
     return (
         <View style={{
             ...shadow5,
@@ -21,7 +20,7 @@ const DailyReportItem = ({ item }) => {
             borderRadius: 15,
             marginTop: 15, overflow: "hidden",
         }}>
-            <Pressable android_ripple={{color: "light-gray"}} style={{
+            <Pressable onPress={press} android_ripple={{color: "light-gray"}} style={{
                 flexDirection: "row",
                 justifyContent: "space-between",
                 alignItems: "center",
