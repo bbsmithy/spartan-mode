@@ -16,6 +16,8 @@ const Actions = () => {
     const dailyReports = useSelector(dailyReportsList)
     const average = useSelector(averageScore)
 
+    console.log("average", average)
+
 
     useEffect(() => {
         dispatch(getDailyReports(10))

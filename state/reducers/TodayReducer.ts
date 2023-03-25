@@ -1,10 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 
-type TodayState = { selectedActions: number[], lastCompletedReportDate: string | null }
+type TodayState = { selectedActions: number[], lastCompletedReport: any | null }
 const initialState: TodayState = {
     selectedActions: [],
-    lastCompletedReportDate: null
+    lastCompletedReport: null
 }
 
 export const todaySlice = createSlice({
@@ -22,11 +22,11 @@ export const todaySlice = createSlice({
             state.selectedActions.push(action.payload)
         }
     },
-    setLastCompletedReportDate: (state, action: PayloadAction<string>) => {
-        state.lastCompletedReportDate = action.payload
+    setLastCompletedReport: (state, action: PayloadAction<any>) => {
+        state.lastCompletedReport = action.payload
     },
     reset: (state) => {
-        state.lastCompletedReportDate = null
+        state.lastCompletedReport = null
         state.selectedActions = []
     }
   },

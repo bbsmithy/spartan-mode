@@ -45,17 +45,26 @@ const DailyReport = ({ route }) => {
                     <Text style={{fontSize: 23, marginBottom: 20}}>{displayDate(report.created_at)}</Text>
                 </View>
             </View>
-            <View style={{paddingHorizontal: 20}}>
+            <View style={{paddingHorizontal: 20 }}>
 
-                <Text>{report.total_score}/100</Text>
-
-                {actions.map(action => {
-                    return (
-                        <Text>
-                            {action.title}
-                        </Text>
-                    )
-                })}
+                <Text style={{fontSize: 40, textAlign: 'center', marginBottom: 20, marginTop: 20}}>{report.total_score}/100</Text>
+                <View style={{paddingHorizontal: 10}}>
+                    {actions.map(action => {
+                        return (
+                            <View style={{flexDirection: "row", justifyContent: "space-between", width: "100%", marginVertical: 2}}>
+                                <Text style={{fontSize: 20}}>
+                                    {action.title}
+                                </Text>
+                                <View style={{ justifyContent: "center", alignItems: "center"}}>
+                                    <Text style={{fontSize: 20, color: action.positive ? "green" : "red", fontWeight: "bold"}}>
+                                        {action.positive?"+":"-"}{action.score}
+                                    </Text>
+                                </View>
+                            </View>
+                        )
+                    })}
+                </View>
+                
             </View>
         </View>
     )

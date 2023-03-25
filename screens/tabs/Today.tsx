@@ -7,13 +7,14 @@ import FullButton from "../../components/FullButton"
 import SelectActionBox from "../../components/SelectActionBox"
 import { todaySlice } from "../../state/reducers/TodayReducer"
 import { actionsList } from "../../state/selectors/ActionsSelectors"
-import { hasCompletedTodaysReport, selectedActionsList, todaysScore } from "../../state/selectors/TodaySelectors"
-import { completeToday } from "../../state/thunks/TodayThunks"
+import { hasCompletedToday, lastCompletedReport, selectedActionsList, todaysScore } from "../../state/selectors/TodaySelectors"
+import { completeToday, updateToday } from "../../state/thunks/TodayThunks"
 import Database from "../../database";
 import { onboardingSlice } from "../../state/reducers/OnboardingReducer"
 import { actionsSlice } from "../../state/reducers/ActionsReducer"
 
 import NewButton from "../../components/NewButton"
+import { isToday } from "../../util"
 
 
 const Actions = () => {
@@ -23,7 +24,10 @@ const Actions = () => {
     const actions = useSelector(actionsList)
     const selectedActions = useSelector(selectedActionsList)
     const currentScore = useSelector(todaysScore)
-    const isComplete = useSelector(hasCompletedTodaysReport)
+    const completedReport = useSelector(lastCompletedReport)
+    const completedReportToday = useSelector(hasCompletedToday)
+
+    console.log("completedReportToday", completedReportToday)
 
 
 
@@ -34,10 +38,19 @@ const Actions = () => {
 
     const onSave = () => {
         const selectedActionData = selectedActions.map((id) => actions.find((action) => action.id === id))
-        dispatch(completeToday({ 
-            actions: selectedActionData,  
-            total_score: currentScore
-        }))
+        
+        if (completedReportToday) {
+            dispatch(updateToday({
+                actions: selectedActionData,
+                total_score: currentScore,
+                id: completedReport.id
+            }))
+        } else {
+            dispatch(completeToday({ 
+                actions: selectedActionData,  
+                total_score: currentScore
+            }))
+        }
     }
 
     const onReset = () => {
@@ -85,7 +98,7 @@ const Actions = () => {
                                             title={item.title} 
                                             score={item.score}
                                             positive={item.positive}
-                                            disabled={isComplete}
+                                            // disabled={isComplete}
                                             checked={selected}
                                             id={item.id} 
                                             onPress={onSelect}
@@ -123,8 +136,8 @@ const Actions = () => {
                 backgroundColor: 'white',
             }}>
                 <FullButton 
-                    text={"Complete Day"}
-                    disabled={isComplete || actions.length === 0}
+                    text={completedReportToday ? "Update": "Complete Day"}
+                    disabled={actions.length === 0}
                     onPress={onSave}
                 />
             </View>

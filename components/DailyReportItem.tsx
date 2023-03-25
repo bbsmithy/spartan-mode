@@ -20,12 +20,16 @@ const DailyReportItem = ({ item }) => {
             borderRadius: 15,
             marginTop: 15, overflow: "hidden",
         }}>
-            <Pressable onPress={press} android_ripple={{color: "light-gray"}} style={{
-                flexDirection: "row",
-                justifyContent: "space-between",
-                alignItems: "center",
-                padding: 20
-            }}>
+            <Pressable 
+                onPress={press} 
+                android_ripple={{color: "light-gray"}} 
+                style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    padding: 20
+                }}
+            >
                 <View style={{flex: 5}}>
                     <Text style={{fontSize: 15, fontWeight: "400"}}>
                         {displayDate(item.created_at)}

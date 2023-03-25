@@ -21,9 +21,13 @@ export const todaysScore = (state: RootState) => {
     return totalScore
 }
 
-export const hasCompletedTodaysReport = (state: RootState) => {
-    if (state.TodayReducer.lastCompletedReportDate) {
-        return isToday(state.TodayReducer.lastCompletedReportDate)
-    }
-    return false
+export const lastCompletedReport = (state: RootState) => {
+    return state.TodayReducer.lastCompletedReport
+}
+
+export const hasCompletedToday = (state: RootState) => {
+
+    console.log({ lastCompletedReport: state.TodayReducer.lastCompletedReport })
+
+    return isToday(state.TodayReducer.lastCompletedReport?.created_at)
 }
