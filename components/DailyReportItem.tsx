@@ -35,8 +35,8 @@ const DailyReportItem = ({ item }) => {
                     <Text style={{fontSize: 13, fontWeight: "500"}}>
                         {item.total_score}/100
                     </Text>
-                    <View style={{height: 8, borderRadius: 5, backgroundColor: "gray", marginTop: 3}}>
-                        <View style={{height: 8, borderRadius: 5, backgroundColor: "green", width: `${item.total_score}%`}} />
+                    <View style={{height: 8, borderRadius: 5, backgroundColor: "gray", marginTop: 3, overflow: "hidden"}}>
+                        <View style={{height: 8, borderRadius: 5, backgroundColor: item.total_score > 0 ? "green" : "red", width: item.total_score > 0 ?`${item.total_score}%` : "100%"}} />
                     </View>
                 </View>
                 <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
