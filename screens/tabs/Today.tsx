@@ -33,14 +33,11 @@ const Actions = () => {
     }, [])
 
     const onSave = () => {
-        const selectedActionData = actions.find((action) => {
-            return selectedActions.find((id) => id === action.id)
-        })
+        const selectedActionData = selectedActions.map((id) => actions.find((action) => action.id === id))
         dispatch(completeToday({ 
             actions: selectedActionData,  
             total_score: currentScore
         }))
-        navigation.navigate("Spartan")
     }
 
     const onReset = () => {
