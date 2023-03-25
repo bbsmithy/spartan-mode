@@ -40,6 +40,7 @@ const Actions = () => {
             actions: selectedActionData,  
             total_score: currentScore
         }))
+        navigation.navigate("Spartan")
     }
 
     const onReset = () => {
@@ -56,7 +57,6 @@ const Actions = () => {
     return (
         <View style={{ marginTop: 40, height: "100%" }}>
 
-            
             <View style={{padding: 20, flex: 1}}>
                 <View style={{flexDirection: "row", justifyContent: "space-between"}}>
                     <Text style={{fontSize: 24, fontWeight: "400"}}>
@@ -68,6 +68,7 @@ const Actions = () => {
                             onPress={onReset}
                         />
                     )}
+                    <NewButton title="Reminder" icon="clock" />
                 </View>
                 <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                     <View style={{ flex: 2 }}>

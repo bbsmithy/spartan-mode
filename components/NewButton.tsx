@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Pressable, Text } from "react-native";
 import { shadow5, red } from "../styles";
 
-const NewButton = ({ onAdd, title = "New" }) => {
+const NewButton = ({ onAdd, title = "New", icon = "plus-circle" }) => {
     return (
         <Pressable 
             onPress={onAdd}
@@ -17,7 +17,7 @@ const NewButton = ({ onAdd, title = "New" }) => {
                 ...shadow5
             }}
         >
-            <MaterialCommunityIcons name="plus-circle" size={16} color="white" />
+            <MaterialCommunityIcons name={icon} size={16} color="white" />
             <Text style={{fontSize: 15, color: "white", marginLeft: 5}}>
                 {title}
             </Text>

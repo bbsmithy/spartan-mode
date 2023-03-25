@@ -6,6 +6,7 @@ import { getDailyReports } from "../../state/thunks/SpartanThunks"
 import { shadow5 } from "../../styles"
 import { averageScore, dailyReportsList } from "../../state/selectors/SpartanSelectors"
 import DailyReportItem from "../../components/DailyReportItem"
+import NewButton from "../../components/NewButton"
 
 
 const Actions = () => {
@@ -26,10 +27,11 @@ const Actions = () => {
 
     return (
         <View style={{ padding: 20, marginTop: 40, height: "100%" }}>
-            <View style={{flexDirection: 'row', justifyContent: "space-between"}}>
+            <View style={{flexDirection: "row", justifyContent: "space-between"}}>
                 <Text style={{fontSize: 24, fontWeight: "400"}}>
                     Spartan
                 </Text>
+                <NewButton onAdd={() => {}} title="Badges" icon="police-badge-outline" />
             </View>
             <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                 <View style={{
