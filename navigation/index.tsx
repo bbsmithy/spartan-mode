@@ -6,6 +6,7 @@ import TabNavigator from '../screens/tabs';
 import { isOnboardingComplete } from '../state/selectors/OnboardingSelectors';
 import AddAction from '../screens/tabs/AddAction';
 import DailyReport from '../screens/tabs/DailyReport';
+import Reminder from '../screens/tabs/Reminder';
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +45,14 @@ const Navigation = () => {
                     <Stack.Screen
                         name='DailyReport'
                         component={DailyReport}
+                        options={{
+                            headerShown: false,
+                            presentation: "modal"
+                        }}
+                    />
+                    <Stack.Screen
+                        name='Reminder'
+                        component={Reminder}
                         options={{
                             headerShown: false,
                             presentation: "modal"

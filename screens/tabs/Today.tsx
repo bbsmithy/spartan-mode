@@ -78,7 +78,9 @@ const Actions = () => {
                             onPress={onReset}
                         />
                     )}
-                    <NewButton title="Reminder" icon="clock" />
+                    <NewButton title="Reminder" icon="clock" onAdd={() => {
+                        navigation.navigate("Reminder")
+                    }} />
                 </View>
                 <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                     <View style={{ flex: 2 }}>

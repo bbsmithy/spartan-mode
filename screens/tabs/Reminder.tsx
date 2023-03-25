@@ -1,12 +1,9 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable } from "react-native"
-import { displayDate } from "../../util";
 
-const DailyReport = ({ route }) => {
+const Reminder = () => {
 
-    const { report } = route.params;
-    const actions = JSON.parse(report.actions)
 
     const navigation = useNavigation();
 
@@ -34,23 +31,13 @@ const DailyReport = ({ route }) => {
                     <MaterialCommunityIcons name="arrow-left" size={24} color="black"  />
                 </Pressable>
                 <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
-                    <Text style={{fontSize: 23, marginBottom: 20}}>{displayDate(report.created_at)}</Text>
+                    <Text style={{fontSize: 23, marginBottom: 20}}>Reminder</Text>
                 </View>
             </View>
             <View style={{paddingHorizontal: 20}}>
-
-                <Text>{report.total_score}/100</Text>
-
-                {actions.map(action => {
-                    return (
-                        <Text>
-                            {action.title}
-                        </Text>
-                    )
-                })}
             </View>
         </View>
     )
 }
 
-export default DailyReport;
+export default Reminder;
