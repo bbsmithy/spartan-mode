@@ -1,6 +1,30 @@
 import Database from "../../database";
 import { onboardingSlice } from "../reducers/OnboardingReducer";
 import { addAction } from "./ActionsThunks";
+import * as Notifications from "expo-notifications";
+import { todaySlice } from "../reducers/TodayReducer";
+
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        shouldShowAlert: true,
+        shouldPlaySound: false,
+        shouldSetBadge: false,
+    }),
+});
+
+const createReminderNotification = async (hours: number, minutes: number) => {
+    return Notifications.scheduleNotificationAsync({
+        content: {
+          title: "Complete your daily report pal 💪",
+          body: "God bless the work 🙏🫡",
+        },
+        trigger: {
+          hour: hours,
+          minute: minutes,
+          repeats: true,
+        },
+    })
+}
 
 export const completeOnboarding = () => async (dispatch, getState) => {
     try {
@@ -16,6 +40,13 @@ export const completeOnboarding = () => async (dispatch, getState) => {
     
         if (state.negativeActionScore && state.negativeActionTitle) {
             dispatch(addAction({ title: state.negativeActionTitle, score: state.negativeActionScore, positive: false }));
+        }
+
+        console.log("STATE HERE ", state)
+
+        if (state.reminderHours && state.reminderMinutes) {
+            const identifier = await createReminderNotification(parseInt(state.reminderHours), parseInt(state.reminderMinutes))
+            dispatch(todaySlice.actions.setReminder({ hours: state.reminderHours, minutes: state.reminderMinutes, identifier }))
         }
     
         dispatch(onboardingSlice.actions.setComplete());

@@ -1,10 +1,19 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 
-type TodayState = { selectedActions: number[], lastCompletedReport: any | null }
+type TodayState = { 
+    selectedActions: number[], 
+    lastCompletedReport: any | null,
+    reminder: {
+        hours: number,
+        minutes: number,
+        identifier: string
+    } | null
+}
 const initialState: TodayState = {
     selectedActions: [],
-    lastCompletedReport: null
+    lastCompletedReport: null,
+    reminder: null
 }
 
 export const todaySlice = createSlice({
@@ -28,6 +37,9 @@ export const todaySlice = createSlice({
     reset: (state) => {
         state.lastCompletedReport = null
         state.selectedActions = []
+    },
+    setReminder: (state, action: PayloadAction<{hours: number, minutes: number, identifier: string}>) => {
+        state.reminder = action.payload
     }
   },
 })

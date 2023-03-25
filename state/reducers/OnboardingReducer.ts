@@ -13,6 +13,8 @@ const initialState = {
     actionTwoScore: "",
     negativeActionScore: "",
     negativeActionTitle: "",
+    reminderHours: "",
+    reminderMinutes: "",
     complete: false
   }
 
@@ -41,6 +43,12 @@ export const onboardingSlice = createSlice({
     setNegativeActionTitle: (state, action: PayloadAction<string>) => {
         state.negativeActionTitle = action.payload
     },
+    setReminderHours: (state, action: PayloadAction<string>) => {
+        state.reminderHours = action.payload
+    },
+    setReminderMinutes: (state, action: PayloadAction<string>) => {
+        state.reminderMinutes = action.payload
+    },
     setComplete: (state) => {
         state.complete = true
     },
@@ -52,6 +60,8 @@ export const onboardingSlice = createSlice({
         state.actionTwoScore = ""
         state.negativeActionScore = ""
         state.negativeActionTitle = ""
+        state.reminderHours = ""
+        state.reminderMinutes = ""
         state.complete = false
     }
   },
