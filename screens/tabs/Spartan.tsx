@@ -57,7 +57,7 @@ const Actions = () => {
                     </View>
                     <View style={{flex: 2, justifyContent: "center", alignItems: "center", ...shadow5, height: 100}}>
                         <Image source={require('../../assets/badges/95100.png')} resizeMode="contain" style={{height: 100 }} />
-                        <Text style={{fontSize: 15, fontWeight: '600'}}>The Spartan</Text>
+                        <Text style={{fontSize: 15, fontWeight: '600', marginTop: 5}}>The Spartan</Text>
                     </View>
                 </View>
                 <View style={{flex: 8}}>
