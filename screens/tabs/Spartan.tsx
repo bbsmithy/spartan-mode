@@ -35,7 +35,13 @@ const Actions = () => {
                 <Text style={{fontSize: 24, fontWeight: "400"}}>
                     Spartan
                 </Text>
-                <NewButton onAdd={() => {}} title="Badges" icon="police-badge-outline" />
+                <NewButton 
+                    onAdd={() => {
+                        navigation.navigate("Badges")
+                    }} 
+                    title="Badges" 
+                    icon="police-badge-outline"
+                />
             </View>
             <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                 <View style={{

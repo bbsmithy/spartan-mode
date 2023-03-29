@@ -7,6 +7,7 @@ import { isOnboardingComplete } from '../state/selectors/OnboardingSelectors';
 import AddAction from '../screens/tabs/AddAction';
 import DailyReport from '../screens/tabs/DailyReport';
 import Reminder from '../screens/tabs/Reminder';
+import Badges from '../screens/tabs/Badges';
 
 const Stack = createNativeStackNavigator();
 
@@ -53,6 +54,14 @@ const Navigation = () => {
                     <Stack.Screen
                         name='Reminder'
                         component={Reminder}
+                        options={{
+                            headerShown: false,
+                            presentation: "modal"
+                        }}
+                    />
+                    <Stack.Screen
+                        name='Badges'
+                        component={Badges}
                         options={{
                             headerShown: false,
                             presentation: "modal"

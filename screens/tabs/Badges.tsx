@@ -1,9 +1,10 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { View, Text, Pressable } from "react-native"
+import { View, Text, Pressable, FlatList, Image } from "react-native"
 import { useSelector } from "react-redux";
 import ReminderTime from "../../components/ReminderTime";
+import { getSpartanLogo, spartanRanking } from "../../util";
 
 const Reminder = () => {
 
@@ -13,8 +14,6 @@ const Reminder = () => {
 
     const [hours, setHours] = useState(reminder.hours)
     const [minutes, setMinutes] = useState(reminder.hours)
-
-    console.log(reminder)
 
     const onBack = () => {
         navigation.goBack();
@@ -27,9 +26,6 @@ const Reminder = () => {
     const onChangeMinutes = (minutes: string) => {
         setMinutes(minutes)
     }
-
-
-
 
     return (
         <View style={{ paddingTop: 40, paddingBottom: 20, flex: 1, backgroundColor: "white"}}>
@@ -50,15 +46,36 @@ const Reminder = () => {
                     <MaterialCommunityIcons name="arrow-left" size={24} color="black"  />
                 </Pressable>
                 <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
-                    <Text style={{fontSize: 23, marginBottom: 20}}>Reminder</Text>
+                    <Text style={{fontSize: 23, marginBottom: 20}}>Badges</Text>
                 </View>
             </View>
             <View style={{paddingHorizontal: 20}}>
-                <ReminderTime 
-                    onChangeHours={onChangeHours} 
-                    onChangeMinutes={onChangeMinutes}
-                    minutes={minutes}
-                    hours={hours}
+                <FlatList
+                    data={Object.keys(spartanRanking)}
+                    automaticallyAdjustKeyboardInsets
+                    contentContainerStyle={{ paddingBottom: 300, paddingHorizontal: 5}}
+                    renderItem={({ item }) => {
+
+                        if (item === "10") {
+                            return null
+                        }
+
+                        const logo = getSpartanLogo(item)
+
+                        return (
+                            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginVertical: 10 }}>
+                                <View style={{flex: 1}}>
+                                    <Image source={logo}  style={{height: 70, width: 70}}/>
+                                </View>
+                                <View style={{flex: 3, padding: 10}}>
+                                    <Text style={{fontSize: 18, fontWeight: '500'}}>{spartanRanking[item].rank}</Text>
+                                    <Text>{spartanRanking[item].description}</Text>
+                                </View>
+                                
+
+                            </View>
+                        )}
+                    }
                 />
             </View>
         </View>
