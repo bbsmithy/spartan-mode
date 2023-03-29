@@ -4,7 +4,7 @@ import { Text, View, Image, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { getDailyReports } from "../../state/thunks/SpartanThunks"
 import { shadow5 } from "../../styles"
-import { averageScore, dailyReportsList } from "../../state/selectors/SpartanSelectors"
+import { averageScore, dailyReportsList, spartanRank } from "../../state/selectors/SpartanSelectors"
 import DailyReportItem from "../../components/DailyReportItem"
 import NewButton from "../../components/NewButton"
 
@@ -15,8 +15,7 @@ const Actions = () => {
     const dispatch = useDispatch()
     const dailyReports = useSelector(dailyReportsList)
     const average = useSelector(averageScore)
-
-    console.log("average", average)
+    const rank = useSelector(spartanRank)
 
 
     useEffect(() => {
@@ -59,7 +58,7 @@ const Actions = () => {
                     </View>
                     <View style={{flex: 2, justifyContent: "center", alignItems: "center", ...shadow5, height: 100}}>
                         <Image source={require('../../assets/badges/95100.png')} resizeMode="contain" style={{height: 100 }} />
-                        <Text style={{fontSize: 15, fontWeight: '600', marginTop: 5}}>The Spartan</Text>
+                        <Text style={{fontSize: 15, fontWeight: '600', marginTop: 5}}>{rank.rank}</Text>
                     </View>
                 </View>
                 <View style={{flex: 8}}>

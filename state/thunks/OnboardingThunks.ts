@@ -12,18 +12,19 @@ Notifications.setNotificationHandler({
     }),
 });
 
-const createReminderNotification = async (hours: number, minutes: number) => {
-    return Notifications.scheduleNotificationAsync({
+export const createReminderNotification = (hours: string, minutes: string) => async (dispatch, getState) => {
+    const identifier = await  Notifications.scheduleNotificationAsync({
         content: {
           title: "Complete your daily report pal 💪",
           body: "God bless the work 🙏🫡",
         },
         trigger: {
-          hour: hours,
-          minute: minutes,
+          hour: parseInt(hours),
+          minute: parseInt(minutes),
           repeats: true,
         },
     })
+    dispatch(todaySlice.actions.setReminder({ hours, minutes, identifier }))
 }
 
 export const completeOnboarding = () => async (dispatch, getState) => {
@@ -45,8 +46,7 @@ export const completeOnboarding = () => async (dispatch, getState) => {
         console.log("STATE HERE ", state)
 
         if (state.reminderHours && state.reminderMinutes) {
-            const identifier = await createReminderNotification(parseInt(state.reminderHours), parseInt(state.reminderMinutes))
-            dispatch(todaySlice.actions.setReminder({ hours: state.reminderHours, minutes: state.reminderMinutes, identifier }))
+            dispatch(createReminderNotification(state.reminderHours, state.reminderMinutes))
         }
     
         dispatch(onboardingSlice.actions.setComplete());

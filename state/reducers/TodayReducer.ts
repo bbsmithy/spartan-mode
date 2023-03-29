@@ -5,8 +5,8 @@ type TodayState = {
     selectedActions: number[], 
     lastCompletedReport: any | null,
     reminder: {
-        hours: number,
-        minutes: number,
+        hours: string,
+        minutes: string,
         identifier: string
     } | null
 }
@@ -38,7 +38,7 @@ export const todaySlice = createSlice({
         state.lastCompletedReport = null
         state.selectedActions = []
     },
-    setReminder: (state, action: PayloadAction<{hours: number, minutes: number, identifier: string}>) => {
+    setReminder: (state, action: PayloadAction<{hours: string, minutes: string, identifier: string}>) => {
         state.reminder = action.payload
     }
   },
