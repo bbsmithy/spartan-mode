@@ -4,6 +4,7 @@ import { useState } from "react";
 import { View, Text, Pressable, FlatList, Image } from "react-native"
 import { useSelector } from "react-redux";
 import ReminderTime from "../../components/ReminderTime";
+import { shadow5 } from "../../styles";
 import { getSpartanLogo, spartanRanking } from "../../util";
 
 const Reminder = () => {
@@ -49,9 +50,9 @@ const Reminder = () => {
                     <Text style={{fontSize: 23, marginBottom: 20}}>Badges</Text>
                 </View>
             </View>
-            <View style={{paddingHorizontal: 20}}>
+            <View style={{paddingHorizontal: 10}}>
                 <FlatList
-                    data={Object.keys(spartanRanking)}
+                    data={Object.keys(spartanRanking).reverse()}
                     automaticallyAdjustKeyboardInsets
                     contentContainerStyle={{ paddingBottom: 300, paddingHorizontal: 5}}
                     renderItem={({ item }) => {
@@ -61,18 +62,19 @@ const Reminder = () => {
                         }
 
                         const logo = getSpartanLogo(item)
+                        const rankData = spartanRanking[item]
 
                         return (
-                            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginVertical: 10 }}>
+                            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginVertical: 5, backgroundColor: "white", padding: 15, borderRadius: 10  }}>
                                 <View style={{flex: 1}}>
                                     <Image source={logo}  style={{height: 70, width: 70}}/>
                                 </View>
-                                <View style={{flex: 3, padding: 10}}>
-                                    <Text style={{fontSize: 18, fontWeight: '500'}}>{spartanRanking[item].rank}</Text>
-                                    <Text>{spartanRanking[item].description}</Text>
-                                </View>
-                                
+                                <View style={{flex: 3, paddingLeft: 12}}>
+                                    <Text style={{fontSize: 18, fontWeight: '500'}}>{rankData.rank}</Text>
+                                    <Text>{rankData.description}</Text>
+                                    <Text>Avg. {rankData.average}/100 (over 10 days)</Text>
 
+                                </View>
                             </View>
                         )}
                     }
