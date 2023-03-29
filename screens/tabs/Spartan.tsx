@@ -7,6 +7,7 @@ import { shadow5 } from "../../styles"
 import { averageScore, dailyReportsList, spartanRank } from "../../state/selectors/SpartanSelectors"
 import DailyReportItem from "../../components/DailyReportItem"
 import NewButton from "../../components/NewButton"
+import { getSpartanLogo } from "../../util"
 
 
 const Actions = () => {
@@ -16,6 +17,8 @@ const Actions = () => {
     const dailyReports = useSelector(dailyReportsList)
     const average = useSelector(averageScore)
     const rank = useSelector(spartanRank)
+
+    const logo = getSpartanLogo(rank.key)
 
 
     useEffect(() => {
@@ -57,7 +60,7 @@ const Actions = () => {
                         </Text>
                     </View>
                     <View style={{flex: 2, justifyContent: "center", alignItems: "center", ...shadow5, height: 100}}>
-                        <Image source={require('../../assets/badges/95100.png')} resizeMode="contain" style={{height: 100 }} />
+                        <Image source={logo} resizeMode="contain" style={{height: 100 }} />
                         <Text style={{fontSize: 15, fontWeight: '600', marginTop: 5}}>{rank.rank}</Text>
                     </View>
                 </View>
