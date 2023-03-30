@@ -10,7 +10,7 @@ import NewButton from "../../components/NewButton"
 import { getSpartanLogo } from "../../util"
 
 
-const Actions = () => {
+const Spartan = () => {
 
     const navigation = useNavigation()
     const dispatch = useDispatch()
@@ -18,19 +18,11 @@ const Actions = () => {
     const average = useSelector(averageScore)
     const daysUsedForAvg = useSelector(daysUsedForAverage)
     const rank = useSelector(spartanRank)
-
-    console.log(average, rank)
-
     const logo = getSpartanLogo(rank?.key)
-
 
     useEffect(() => {
         dispatch(getDailyReports(10))
     }, [])
-
-    const onAdd = () => {
-        navigation.navigate("AddAction")
-    }
 
     return (
         <View style={{ padding: 20, marginTop: 40, height: "100%" }}>
@@ -54,9 +46,7 @@ const Actions = () => {
                     marginBottom: 10,
                     flexDirection: 'row', 
                     justifyContent: 'space-between', 
-                    backgroundColor: "white", 
-                    // borderWidth: 1,
-                    // borderColor: "#e0e0e0", 
+                    backgroundColor: "white",
                     borderRadius: 15, 
                     paddingVertical: 15, 
                     alignItems: "center"
@@ -99,4 +89,4 @@ const Actions = () => {
     )
 }
 
-export default Actions;
+export default Spartan;

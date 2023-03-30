@@ -1,21 +1,12 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
 import { View, Text, Pressable } from "react-native"
-import { useDispatch } from "react-redux";
-import ActionInput from "../../components/ActionInput";
-import FullButton from "../../components/FullButton";
-import OnboardingActionInput from "../../components/OnboardingActionInput";
-import { addAction } from "../../state/thunks/ActionsThunks";
 import { displayDate } from "../../util";
 
 const DailyReport = ({ route }) => {
 
     const { report } = route.params;
-    const actions = JSON.parse(report.actions)
-
-    console.log(actions)
-
+    const actions = JSON.parse(report.actions);
     const navigation = useNavigation();
 
     const onBack = () => {

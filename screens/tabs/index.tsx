@@ -1,10 +1,6 @@
-import {View, Text, ScrollView, FlatList, Button} from "react-native"
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { red } from "../../styles";
-import ActionInput from "../../components/ActionInput";
-import FullButton from "../../components/FullButton";
-import { useNavigation } from "@react-navigation/native";
 import Actions from "./Actions";
 import Today from "./Today";
 import Spartan from "./Spartan";

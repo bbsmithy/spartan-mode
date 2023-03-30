@@ -2,7 +2,6 @@ import { useEffect } from "react"
 import { Text, View, FlatList, Button } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigation } from "@react-navigation/native"
-
 import FullButton from "../../components/FullButton"
 import SelectActionBox from "../../components/SelectActionBox"
 import { todaySlice } from "../../state/reducers/TodayReducer"
@@ -12,12 +11,10 @@ import { completeToday, updateToday } from "../../state/thunks/TodayThunks"
 import Database from "../../database";
 import { onboardingSlice } from "../../state/reducers/OnboardingReducer"
 import { actionsSlice } from "../../state/reducers/ActionsReducer"
-
 import NewButton from "../../components/NewButton"
-import { isToday } from "../../util"
 
 
-const Actions = () => {
+const Today = () => {
 
     const dispatch = useDispatch()
     const navigation = useNavigation()
@@ -148,4 +145,4 @@ const Actions = () => {
     )
 }
 
-export default Actions;
+export default Today;

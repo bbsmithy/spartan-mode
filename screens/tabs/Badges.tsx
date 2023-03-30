@@ -1,10 +1,6 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-import { useState } from "react";
 import { View, Text, Pressable, FlatList, Image } from "react-native"
-import { useSelector } from "react-redux";
-import ReminderTime from "../../components/ReminderTime";
-import { shadow5 } from "../../styles";
 import { getSpartanLogo, spartanRanking } from "../../util";
 
 const Badges = () => {

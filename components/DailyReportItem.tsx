@@ -15,16 +15,14 @@ const DailyReportItem = ({ item }) => {
     }
 
     return (
-        <View style={{
-            ...shadow5,
-            backgroundColor: "white",
-            borderRadius: 15,
-            marginTop: 15, overflow: "hidden",
-        }}>
             <TouchRipple 
                 onPress={press} 
-                rippleColor="light-grey"
+                rippleColor="darkgrey"
                 style={{
+                    ...shadow5,
+                    backgroundColor: "white",
+                    borderRadius: 15,
+                    marginTop: 15,
                     flexDirection: "row",
                     justifyContent: "space-between",
                     alignItems: "center",
@@ -48,7 +46,6 @@ const DailyReportItem = ({ item }) => {
                     <MaterialCommunityIcons name="chevron-right" size={24} color="black" />
                 </View>
             </TouchRipple>
-        </View>
     )
 }
 

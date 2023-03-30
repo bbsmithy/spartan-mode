@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { View, Text, Pressable } from "react-native"
+import { View, Text } from "react-native"
 import { useDispatch } from "react-redux";
 import TouchRipple from "react-native-touch-ripple";
 import FullButton from "../../components/FullButton";

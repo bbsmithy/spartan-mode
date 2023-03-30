@@ -18,8 +18,6 @@ const Reminder = () => {
     const [minutes, setMinutes] = useState<string>(reminder?.minutes)
     const [saveEnabled, setSaveEnabled] = useState(false)
 
-    console.log(reminder)
-
     const onBack = () => {
         navigation.goBack();
     }
