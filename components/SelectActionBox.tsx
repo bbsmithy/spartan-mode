@@ -43,13 +43,14 @@ const styles = StyleSheet.create({
         alignItems: "center",
         width: "100%",
         padding: 20,
+        borderRadius: 15,
         backgroundColor: 'white',
         flexDirection: "row"
     },
     container: {
         borderRadius: 15,
         marginVertical: 5,
-        overflow: 'hidden',
+        // overflow: 'hidden',
         backgroundColor:"white",
         ...shadow5
     }

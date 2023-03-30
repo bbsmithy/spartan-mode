@@ -7,25 +7,13 @@ import ReminderTime from "../../components/ReminderTime";
 import { shadow5 } from "../../styles";
 import { getSpartanLogo, spartanRanking } from "../../util";
 
-const Reminder = () => {
+const Badges = () => {
 
 
     const navigation = useNavigation();
-    const reminder = useSelector((state: any) => state.TodayReducer.reminder)
-
-    const [hours, setHours] = useState(reminder.hours)
-    const [minutes, setMinutes] = useState(reminder.hours)
 
     const onBack = () => {
         navigation.goBack();
-    }
-
-    const onChangeHours = (hours: string) => {
-        setHours(hours)
-    }
-
-    const onChangeMinutes = (minutes: string) => {
-        setMinutes(minutes)
     }
 
     return (
@@ -84,4 +72,4 @@ const Reminder = () => {
     )
 }
 
-export default Reminder;
+export default Badges;

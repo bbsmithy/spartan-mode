@@ -39,7 +39,7 @@ const ActionInput = ({
     }
 
     return (
-        <View style={{ flexDirection: "row", marginVertical: 5, ...shadow5 }}>
+        <View style={{ flexDirection: "row", marginVertical: 5 }}>
             <TextInput 
                 onChangeText={onChangeTitle} 
                 placeholder={placeholder} 

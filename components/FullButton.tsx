@@ -1,4 +1,4 @@
-import { View, Pressable, Text, StyleSheet } from "react-native"
+import { View, Pressable, Text, StyleSheet, Platform } from "react-native"
 import { red, shadow5 } from "../styles"
 
 
@@ -10,6 +10,7 @@ const FullButton = ({ text, onPress, disabled }) => {
                     backgroundColor: disabled ? "#efefef" : red,
                     width: "100%",
                     justifyContent: "center",
+                    borderRadius: 15,
                     padding: 20,
                     alignItems: "center"
                 }}
@@ -30,7 +31,7 @@ const FullButton = ({ text, onPress, disabled }) => {
 const styles = StyleSheet.create({
     nextBtn: {
         borderRadius: 15,
-        overflow: 'hidden',
+        overflow: Platform.OS === 'android' ? 'hidden' : "visible",
         width: "100%",
         ...shadow5
     }
