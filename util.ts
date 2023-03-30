@@ -46,69 +46,80 @@ export const spartanRanking = {
         "rank": "Polemarch",
         "description": "Commander-in-chief of the Spartan army.",
         "average": 90,
+        "badge": getSpartanLogo("9"),
         "key": "9"
     },
     "9": {
       "rank": "Polemarch",
       "description": "Commander-in-chief of the Spartan army.",
       "key": "9",
-      "average": 90
+      "average": 90,
+        "badge": getSpartanLogo("9")
     },
     "8": {
       "rank": "Strategos",
       "description": "General who commanded a division of the Spartan army.",
         "key": "8",
-        "average": 80
+        "average": 80,
+        "badge": getSpartanLogo("8")
     },
     "7": {
       "rank": "Harmost",
       "description": "Spartan governor responsible for maintaining order and security in conquered territories.",
         "key": "7",
-        "average": 70
+        "average": 70,
+        "badge": getSpartanLogo("7")
         
     },
     "6": {
-      "rank": "Spartiate",
-      "description": "Full Spartan citizen who was trained as a soldier from a young age, and formed the backbone of the Spartan army.",
-        "key": "6",
-        "average": 60
-    },
-    "5": {
       "rank": "Lochagos",
       "description": "Captain who led a company of soldiers.",
-        "key": "5",
-        "average": 50
+        "key": "6",
+        "average": 60,
+        "badge": getSpartanLogo("6")
     },
-    "4": {
+    "5": {
       "rank": "Enomotarch",
       "description": "Sergeant who led a platoon of soldiers.",
+        "key": "5",
+        "average": 50,
+        "badge": getSpartanLogo("5")
+    },
+    "4": {
+        "rank": "Hekatontarch",
+        "description": "Sergeant who led a group of one hundred soldiers.",
         "key": "4",
-        "average": 40
-
+        "average": 40,
+        "badge": getSpartanLogo("4")
     },
     "3": {
       "rank": "Pentekontarch",
       "description": "Sergeant who led a group of fifty soldiers.",
         "key": "3",
-        "average": 30
+        "average": 30,
+        "badge": getSpartanLogo("3")
     },
+
     "2": {
-      "rank": "Hekatontarch",
-      "description": "Sergeant who led a group of one hundred soldiers.",
+        "rank": "Spartiate",
+        "description": "Full Spartan citizen who was trained as a soldier from a young age, and formed the backbone of the Spartan army.",
         "key": "2",
-        "average": 20
+        "average": 20,
+        "badge": getSpartanLogo("2")
     },
     "1": {
       "rank": "Hippeis",
       "description": "Spartan cavalry, composed of a social class of wealthy Spartan citizens who provided their own horses and equipment.",
         "key": "1",
-        "average": 10
+        "average": 10,
+        "badge": getSpartanLogo("1")
     },
     "0": {
       "rank": "Perioikoi",
       "description": "Non-citizen inhabitants of Sparta who were responsible for crafts, trade, and other non-military activities, and also served in the Spartan army as auxiliary troops.",
         "key": "0",
-        "average": 0
+        "average": 0,
+        "badge": getSpartanLogo("0")
     }
   }
   

@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, FlatList, Image } from "react-native"
-import { getSpartanLogo, spartanRanking } from "../../util";
+import { spartanRanking } from "../../util";
 
 const Rank = () => {
 
@@ -44,19 +44,18 @@ const Rank = () => {
                         if (item === "10") {
                             return null
                         }
-
-                        const logo = getSpartanLogo(item)
+                        
                         const rankData = spartanRanking[item]
 
                         return (
                             <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginVertical: 5, backgroundColor: "white", padding: 15, borderRadius: 10  }}>
                                 <View style={{flex: 1}}>
-                                    <Image source={logo}  style={{height: 70, width: 70}}/>
+                                    <Image source={rankData.badge}  style={{height: 70, width: 70}}/>
                                 </View>
                                 <View style={{flex: 3, paddingLeft: 12}}>
                                     <Text style={{fontSize: 18, fontWeight: '500'}}>{rankData.rank}</Text>
                                     <Text>{rankData.description}</Text>
-                                    <Text>Avg. {rankData.average}/100 (over 10 days)</Text>
+                                    <Text>Avg. {rankData.average}/100</Text>
 
                                 </View>
                             </View>
