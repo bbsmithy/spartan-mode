@@ -1,5 +1,5 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Pressable, Text } from "react-native";
+import { Text } from "react-native";
 import TouchRipple  from 'react-native-touch-ripple'
 import { shadow5, red } from "../styles";
 

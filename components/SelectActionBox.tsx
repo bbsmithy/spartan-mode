@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { View, Text, StyleSheet, Pressable } from "react-native"
+import { View, Text, StyleSheet } from "react-native"
 import BouncyCheckbox from "react-native-bouncy-checkbox";
 import TouchRipple  from 'react-native-touch-ripple'
 import { shadow5 } from "../styles";

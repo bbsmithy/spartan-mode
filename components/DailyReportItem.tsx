@@ -1,7 +1,7 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons"
 import { useNavigation } from "@react-navigation/native"
 import { Text } from "react-native"
-import { Pressable, View } from "react-native"
+import { View } from "react-native"
 import TouchRipple  from 'react-native-touch-ripple'
 import { shadow5 } from "../styles"
 import { displayDate } from "../util"

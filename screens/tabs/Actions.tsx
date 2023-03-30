@@ -1,14 +1,12 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons"
 import { useNavigation } from "@react-navigation/native"
 import { useEffect } from "react"
-import { Text, View, FlatList, StyleSheet, Pressable } from "react-native"
+import { Text, View, FlatList, StyleSheet } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import ActionInput from "../../components/ActionInput"
 import FullButton from "../../components/FullButton"
 import NewButton from "../../components/NewButton"
 import { actionsList, hasEdits } from "../../state/selectors/ActionsSelectors"
 import { getAllActions, saveChanges } from "../../state/thunks/ActionsThunks"
-import { red, shadow5 } from "../../styles"
 
 
 const Actions = () => {

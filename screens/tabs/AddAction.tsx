@@ -3,10 +3,11 @@ import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native"
 import { useDispatch } from "react-redux";
-import ActionInput from "../../components/ActionInput";
+import TouchRipple from "react-native-touch-ripple";
 import FullButton from "../../components/FullButton";
 import OnboardingActionInput from "../../components/OnboardingActionInput";
 import { addAction } from "../../state/thunks/ActionsThunks";
+
 
 const AddAction = () => {
 
@@ -19,8 +20,6 @@ const AddAction = () => {
     const onAdd = () => {
         dispatch(addAction({ title, score, positive }))
         navigation.goBack();
-
-        
     }
 
     const onBack = () => {
@@ -31,8 +30,10 @@ const AddAction = () => {
     return (
         <View style={{ paddingTop: 40, paddingBottom: 20, flex: 1, backgroundColor: "white", justifyContent: "space-between"}}>
             <View>
-                <Pressable
-                    android_ripple={{ color: 'darkgrey',  radius: 25 }} 
+                <TouchRipple
+                    rippleColor="darkgrey"
+                    rippleOpacity={1}
+                    rippleDuration={500}
                     style={{ 
                         borderRadius: 25,
                         height: 50, 
@@ -45,7 +46,7 @@ const AddAction = () => {
                     onPress={onBack}
                 >
                     <MaterialCommunityIcons name="arrow-left" size={24} color="black"  />
-                </Pressable>
+                </TouchRipple>
                 <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
                     <Text style={{fontSize: 23, marginBottom: 20}}>New Action</Text>
                     <OnboardingActionInput

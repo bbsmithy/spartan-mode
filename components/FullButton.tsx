@@ -1,4 +1,4 @@
-import { View, Pressable, Text, StyleSheet, Platform } from "react-native"
+import { View, Text, StyleSheet, Platform } from "react-native"
 import TouchRipple  from 'react-native-touch-ripple'
 import { red, shadow5 } from "../styles"
 

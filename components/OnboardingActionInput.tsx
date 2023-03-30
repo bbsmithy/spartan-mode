@@ -1,8 +1,4 @@
-import { useNavigation } from "@react-navigation/native";
-import { View, TextInput, Text, Pressable } from "react-native"
-import { useDispatch } from "react-redux";
-import { actionsSlice } from "../state/reducers/ActionsReducer";
-import { shadow5 } from "../styles";
+import { View, TextInput  } from "react-native"
 import SignToggle from "./SignToggle";
 
 
