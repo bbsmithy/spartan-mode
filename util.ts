@@ -27,7 +27,7 @@ export const getSpartanLogo = (key: string) => {
         case "5":
             return require("./assets/badges/5.png")
         case "4":
-            return require("./assets/badges/5.png")
+            return require("./assets/badges/4.png")
         case "3":
             return require("./assets/badges/3.png")
         case "2":

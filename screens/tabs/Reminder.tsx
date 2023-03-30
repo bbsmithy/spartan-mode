@@ -2,17 +2,22 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
 import { View, Text, Pressable } from "react-native"
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import FullButton from "../../components/FullButton";
 import ReminderTime from "../../components/ReminderTime";
+import { todaySlice } from "../../state/reducers/TodayReducer";
+import { createReminderNotification } from "../../state/thunks/OnboardingThunks";
 
 const Reminder = () => {
 
 
     const navigation = useNavigation();
+    const dispatch = useDispatch();
     const reminder = useSelector((state: any) => state.TodayReducer.reminder)
 
-    const [hours, setHours] = useState(reminder.hours)
-    const [minutes, setMinutes] = useState(reminder.hours)
+    const [hours, setHours] = useState<string>(reminder?.hours)
+    const [minutes, setMinutes] = useState<string>(reminder?.minutes)
+    const [saveEnabled, setSaveEnabled] = useState(false)
 
     console.log(reminder)
 
@@ -21,11 +26,18 @@ const Reminder = () => {
     }
 
     const onChangeHours = (hours: string) => {
+        setSaveEnabled(true)
         setHours(hours)
     }
 
     const onChangeMinutes = (minutes: string) => {
+        setSaveEnabled(true)
         setMinutes(minutes)
+    }
+
+
+    const onSave = () => {
+        dispatch(createReminderNotification(hours, minutes))
     }
 
 
@@ -59,6 +71,13 @@ const Reminder = () => {
                     onChangeMinutes={onChangeMinutes}
                     minutes={minutes}
                     hours={hours}
+                />
+            </View>
+            <View style={{ paddingHorizontal: 20, position: "absolute", bottom: 20, width: "100%" }}>
+                <FullButton 
+                    text={"Save"} 
+                    onPress={onSave} 
+                    disabled={!saveEnabled}
                 />
             </View>
         </View>

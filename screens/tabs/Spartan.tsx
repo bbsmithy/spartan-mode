@@ -18,7 +18,7 @@ const Actions = () => {
     const average = useSelector(averageScore)
     const rank = useSelector(spartanRank)
 
-    const logo = getSpartanLogo(rank.key)
+    const logo = getSpartanLogo(rank?.key)
 
 
     useEffect(() => {
@@ -66,8 +66,12 @@ const Actions = () => {
                         </Text>
                     </View>
                     <View style={{flex: 2, justifyContent: "center", alignItems: "center", ...shadow5, height: 100}}>
-                        <Image source={logo} resizeMode="contain" style={{height: 100 }} />
-                        <Text style={{fontSize: 15, fontWeight: '600', marginTop: 5}}>{rank.rank}</Text>
+                        {rank && (
+                            <>
+                                <Image source={logo} resizeMode="contain" style={{height: 100 }} />
+                                <Text style={{fontSize: 15, fontWeight: '600', marginTop: 5}}>{rank.rank}</Text>
+                            </>
+                        )}
                     </View>
                 </View>
                 <View style={{flex: 8}}>
@@ -77,7 +81,6 @@ const Actions = () => {
                         keyExtractor={item => item.id}
                         contentContainerStyle={{ paddingBottom: 300, paddingHorizontal: 5}}
                         renderItem={({ item }) => {
-                            console.log("ITEM: ", item)
                             return (
                                 <DailyReportItem item={item} />
                             )}

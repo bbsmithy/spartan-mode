@@ -30,7 +30,7 @@ const ReminderTime = ({ onChangeHours, onChangeMinutes, hours, minutes }) => {
             <View>
                 <Text style={{
                         fontSize: 30,
-                        marginTop: 10,
+                        marginTop: 20,
                         fontWeight: "800"
                     }}>
                     :

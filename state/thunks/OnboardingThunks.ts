@@ -13,6 +13,10 @@ Notifications.setNotificationHandler({
 });
 
 export const createReminderNotification = (hours: string, minutes: string) => async (dispatch, getState) => {
+    const currentReminder = getState().TodayReducer.reminder
+    if (currentReminder && currentReminder.identifier) {
+        await Notifications.cancelScheduledNotificationAsync(currentReminder.identifier)
+    }
     const identifier = await  Notifications.scheduleNotificationAsync({
         content: {
           title: "Complete your daily report pal 💪",
