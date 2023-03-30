@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native"
 import BouncyCheckbox from "react-native-bouncy-checkbox";
+import TouchRipple  from 'react-native-touch-ripple'
 import { shadow5 } from "../styles";
 
 type SelectActionBoxProps = { 
@@ -22,7 +23,14 @@ const SelectActionBox = ({ title, score, onPress, id, checked, positive, disable
 
     return (
         <View style={styles.container}>
-            <Pressable style={[styles.selectActionBox, disabledStyle]} android_ripple={{ color: positive ? 'green' : 'red'  }} disabled={disabled}  onPress={press}>
+            <TouchRipple 
+                style={[styles.selectActionBox, disabledStyle]} 
+                rippleDuration={350} 
+                rippleColor={positive ? 'green' : 'red'  } 
+                rippleOpacity={1}
+                rippleContainerBorderRadius={15}
+                onPress={press}
+            >
                 <View style={{flex: 1}}>
                     <Text style={{fontSize: 20, fontWeight: "600"}}>{!positive && "-"}{score}</Text>
                 </View>
@@ -32,7 +40,7 @@ const SelectActionBox = ({ title, score, onPress, id, checked, positive, disable
                 <View style={{flex: 1}}>
                     <BouncyCheckbox isChecked={checked} disableBuiltInState onPress={press} fillColor={positive ? "green" : "red"} />
                 </View>
-            </Pressable>
+            </TouchRipple>
         </View>
         
     )

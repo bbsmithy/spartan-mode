@@ -2,6 +2,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons"
 import { useNavigation } from "@react-navigation/native"
 import { Text } from "react-native"
 import { Pressable, View } from "react-native"
+import TouchRipple  from 'react-native-touch-ripple'
 import { shadow5 } from "../styles"
 import { displayDate } from "../util"
 
@@ -20,9 +21,9 @@ const DailyReportItem = ({ item }) => {
             borderRadius: 15,
             marginTop: 15, overflow: "hidden",
         }}>
-            <Pressable 
+            <TouchRipple 
                 onPress={press} 
-                android_ripple={{color: "light-gray"}} 
+                rippleColor="light-grey"
                 style={{
                     flexDirection: "row",
                     justifyContent: "space-between",
@@ -46,7 +47,7 @@ const DailyReportItem = ({ item }) => {
                 <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
                     <MaterialCommunityIcons name="chevron-right" size={24} color="black" />
                 </View>
-            </Pressable>
+            </TouchRipple>
         </View>
     )
 }

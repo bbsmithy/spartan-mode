@@ -1,9 +1,11 @@
-import { Pressable, Text } from "react-native"
+import { Text } from "react-native"
+import TouchRipple  from 'react-native-touch-ripple'
 
 const SignToggle = ({ positive, onSwitch, disabled }) => {
     return (
-        <Pressable 
-            android_ripple={{ color: 'light-grey' }} 
+        <TouchRipple
+            rippleDuration={350}
+            ripleColor={'light-grey'}
             style={{
                 justifyContent: "center",
                 alignItems: "center",
@@ -16,7 +18,7 @@ const SignToggle = ({ positive, onSwitch, disabled }) => {
             <Text style={{fontSize: 25, color: "white"}}>
                 {positive ? "+":"-"}
             </Text>
-        </Pressable>
+        </TouchRipple>
     )
 }
 

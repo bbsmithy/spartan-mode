@@ -19,8 +19,6 @@ export default function OnboardingScreen() {
     const dispatch = useDispatch()
     const screenIndex = useSelector(getScreenIndex)
 
-    const navigation = useNavigation()
-
     useEffect(() => {
         Database.logTableSchema('actions')
     }, [])
@@ -73,19 +71,22 @@ export default function OnboardingScreen() {
                 {!isWelcome && (<Text style={{ fontWeight:"600" }}>{screenIndex}/3</Text>)}
             </View>
             <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
-                <Pressable 
-                    android_ripple={{ color: 'grey', radius: 25 }} 
-                    style={{
-                        height: 50, 
-                        width: 50, 
-                        borderRadius: 25, 
-                        justifyContent: "center", 
-                        alignItems: "center"
-                    }} 
-                    onPress={skip}
-                >
-                    <Text>Skip</Text>
-                </Pressable> 
+                {process.env.NODE_ENV === "development" && (
+                    <Pressable 
+                        android_ripple={{ color: 'grey', radius: 25 }} 
+                        style={{
+                            height: 50, 
+                            width: 50, 
+                            borderRadius: 25, 
+                            justifyContent: "center", 
+                            alignItems: "center"
+                        }} 
+                        onPress={skip}
+                    >
+                        <Text>Skip</Text>
+                    </Pressable> 
+                )}
+                
             </View> 
         </View>
         <ScrollView style={{ marginTop: "10%" }} contentContainerStyle={{ paddingBottom: 100 }}>

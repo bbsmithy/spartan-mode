@@ -64,7 +64,7 @@ const AddAction = () => {
             </View>
             <View style={{paddingHorizontal: 20}}>
             <FullButton
-                        
+                        disabled={!title || !score}
                         text={"Add"}
                         onPress={onAdd}
                     />

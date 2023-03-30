@@ -1,12 +1,15 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Pressable, Text } from "react-native";
+import TouchRipple  from 'react-native-touch-ripple'
 import { shadow5, red } from "../styles";
 
 const NewButton = ({ onAdd, title = "New", icon = "plus-circle" }) => {
     return (
-        <Pressable 
+        <TouchRipple
             onPress={onAdd}
-            android_ripple={{color: "light-grey"}}
+            rippleColor='white'
+            rippleDuration={350}
+            rippleContainerBorderRadius={8}
             style={{ 
                 flexDirection: "row", 
                 justifyContent: "center", 
@@ -21,7 +24,7 @@ const NewButton = ({ onAdd, title = "New", icon = "plus-circle" }) => {
             <Text style={{fontSize: 15, color: "white", marginLeft: 5}}>
                 {title}
             </Text>
-        </Pressable>
+        </TouchRipple>
     )
 }
 
