@@ -86,7 +86,7 @@ const Spartan = () => {
             {!rank && (
                 <View style={{justifyContent: "center", padding: 40, marginTop: "35%" }}>
                     <Text style={{fontSize: 20, textAlign: "center", color: "gray"}}>
-                        You have not completed any daily reports yet 😐.
+                        You have not completed any daily reports yet .
                         Once you do you will get an average score over a maximum of 10 days.
                         The aim to to reach the highest rank of spartan Polemarch, which is 90/100 avg score.
                         Check out the ranks below 👇

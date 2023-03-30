@@ -58,7 +58,7 @@ const Actions = () => {
             {actions.length === 0 && (
                <View style={{justifyContent: "center", padding: 40, marginTop: "35%" }}>
                     <Text style={{fontSize: 20, textAlign: "center", color: "gray"}}>
-                        You have no actions yet 😐
+                        You have no actions yet 
                     </Text>
                     <View style={{width: "100%", justifyContent: "center", alignItems: "center", marginTop: 20 }}>
                         <NewButton 
