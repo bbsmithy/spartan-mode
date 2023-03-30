@@ -7,7 +7,7 @@ import { isOnboardingComplete } from '../state/selectors/OnboardingSelectors';
 import AddAction from '../screens/tabs/AddAction';
 import DailyReport from '../screens/tabs/DailyReport';
 import Reminder from '../screens/tabs/Reminder';
-import Badges from '../screens/tabs/Badges';
+import Rank from '../screens/tabs/Rank';
 
 const Stack = createNativeStackNavigator();
 
@@ -60,8 +60,8 @@ const Navigation = () => {
                         }}
                     />
                     <Stack.Screen
-                        name='Badges'
-                        component={Badges}
+                        name='Rank'
+                        component={Rank}
                         options={{
                             headerShown: false,
                             presentation: "modal"

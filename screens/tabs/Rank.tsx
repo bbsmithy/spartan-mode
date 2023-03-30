@@ -3,7 +3,7 @@ import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, FlatList, Image } from "react-native"
 import { getSpartanLogo, spartanRanking } from "../../util";
 
-const Badges = () => {
+const Rank = () => {
 
 
     const navigation = useNavigation();
@@ -31,7 +31,7 @@ const Badges = () => {
                     <MaterialCommunityIcons name="arrow-left" size={24} color="black"  />
                 </Pressable>
                 <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
-                    <Text style={{fontSize: 23, marginBottom: 20}}>Badges</Text>
+                    <Text style={{fontSize: 23, marginBottom: 20}}>Rank</Text>
                 </View>
             </View>
             <View style={{paddingHorizontal: 10}}>
@@ -68,4 +68,4 @@ const Badges = () => {
     )
 }
 
-export default Badges;
+export default Rank;

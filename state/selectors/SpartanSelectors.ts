@@ -16,7 +16,12 @@ export const daysUsedForAverage = (state: RootState) => {
 
 export const spartanRank = (state: RootState) => {
     const averageScore = state.SpartanReducer.averageScore
-    if (averageScore <=0 || !averageScore) {
+
+    if (!averageScore) {
+        return false
+    }
+
+    if (averageScore <=0) {
         return spartanRanking['0']
     } else {
         return spartanRanking[`${Math.floor(averageScore / 10)}`]
