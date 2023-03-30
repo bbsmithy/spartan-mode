@@ -5,7 +5,6 @@ import { View, Text, Pressable } from "react-native"
 import { useDispatch, useSelector } from "react-redux";
 import FullButton from "../../components/FullButton";
 import ReminderTime from "../../components/ReminderTime";
-import { todaySlice } from "../../state/reducers/TodayReducer";
 import { createReminderNotification } from "../../state/thunks/OnboardingThunks";
 
 const Reminder = () => {

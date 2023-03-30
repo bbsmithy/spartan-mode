@@ -4,7 +4,7 @@ import { Text, View, Image, FlatList } from "react-native"
 import { useDispatch, useSelector } from "react-redux"
 import { getDailyReports } from "../../state/thunks/SpartanThunks"
 import { shadow5 } from "../../styles"
-import { averageScore, dailyReportsList, spartanRank } from "../../state/selectors/SpartanSelectors"
+import { averageScore, dailyReportsList, daysUsedForAverage, spartanRank } from "../../state/selectors/SpartanSelectors"
 import DailyReportItem from "../../components/DailyReportItem"
 import NewButton from "../../components/NewButton"
 import { getSpartanLogo } from "../../util"
@@ -16,7 +16,10 @@ const Actions = () => {
     const dispatch = useDispatch()
     const dailyReports = useSelector(dailyReportsList)
     const average = useSelector(averageScore)
+    const daysUsedForAvg = useSelector(daysUsedForAverage)
     const rank = useSelector(spartanRank)
+
+    console.log(average, rank)
 
     const logo = getSpartanLogo(rank?.key)
 
@@ -43,7 +46,8 @@ const Actions = () => {
                     icon="police-badge-outline"
                 />
             </View>
-            <View style={{flexDirection: "column", display: "flex", flex: 1}}>
+            {average !== null && (
+                <View style={{flexDirection: "column", display: "flex", flex: 1}}>
                 <View style={{
                     flex: 2,
                     marginTop: 10,
@@ -62,7 +66,7 @@ const Actions = () => {
                             {average}/100
                         </Text>
                         <Text style={{fontSize: 10, fontWeight: "400"}}>
-                            Avg Score (Last 10 days)
+                            Avg Score (Last {daysUsedForAvg} days)
                         </Text>
                     </View>
                     <View style={{flex: 2, justifyContent: "center", alignItems: "center", ...shadow5, height: 100}}>
@@ -87,7 +91,9 @@ const Actions = () => {
                         }
                     />
                 </View>
-            </View>            
+            </View>  
+            )}
+                      
         </View>
         
     )
