@@ -1,12 +1,15 @@
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
 import { View, Text, Pressable, FlatList, Image } from "react-native"
+import { useSelector } from "react-redux";
+import { spartanRank } from "../../state/selectors/SpartanSelectors";
 import { spartanRanking } from "../../util";
 
 const Rank = () => {
 
 
     const navigation = useNavigation();
+    const currentRank = useSelector(spartanRank)
 
     const onBack = () => {
         navigation.goBack();
@@ -44,11 +47,12 @@ const Rank = () => {
                         if (item === "10") {
                             return null
                         }
-                        
+
                         const rankData = spartanRanking[item]
+                        const isCurrentRank = currentRank.key === item
 
                         return (
-                            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginVertical: 5, backgroundColor: "white", padding: 15, borderRadius: 10  }}>
+                            <View style={{flexDirection: "row", alignItems: "center", justifyContent: "space-around", marginVertical: 5, backgroundColor: "white", padding: 15, borderRadius: 10, borderColor: isCurrentRank ? "green" : "white", borderWidth: 2 }}>
                                 <View style={{flex: 1}}>
                                     <Image source={rankData.badge}  style={{height: 70, width: 70}}/>
                                 </View>
