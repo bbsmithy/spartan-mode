@@ -35,6 +35,7 @@ const Reminder = () => {
 
     const onSave = () => {
         dispatch(createReminderNotification(hours, minutes))
+        navigation.goBack();
     }
 
 
