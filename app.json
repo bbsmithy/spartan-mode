@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "spartan-mode",
+    "name": "Spartan Mode",
     "slug": "spartan-mode",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -15,12 +15,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "spartanmode"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
+      },
+      "package": "com.brian_smith_personal.spartanmode"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3254866f-04f6-4af8-99a4-024e43a35385"
       }
     }
   }

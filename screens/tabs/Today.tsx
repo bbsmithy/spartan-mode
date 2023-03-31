@@ -61,8 +61,11 @@ const Today = () => {
         dispatch(todaySlice.actions.toggleAction(id))
     }
 
+    const noActions = actions.length === 0
+
     return (
-        <View style={{ marginTop: 40, height: "100%" }}>
+        <>
+        <View style={{ paddingTop: "7%", height: "100%" }}>
 
             <View style={{padding: 20, flex: 1}}>
                 <View style={{flexDirection: "row", justifyContent: "space-between"}}>
@@ -79,14 +82,29 @@ const Today = () => {
                         navigation.navigate("Reminder")
                     }} />
                 </View>
-                <View style={{flexDirection: "column", display: "flex", flex: 1}}>
-                    <View style={{ flex: 2 }}>
-                        <View style={{justifyContent: "center", padding: 40 }}>
-                            <Text style={{fontSize: 40, textAlign: "center"}}>{currentScore}/100</Text>
+                {noActions && (
+                    <View style={{justifyContent: "center", marginTop: "35%" }}>
+                        <Text style={{fontSize: 20, textAlign: "center", color: "gray"}}>
+                            You have no actions yet 
+                        </Text>
+                        <View style={{width: "100%", justifyContent: "center", alignItems: "center", marginTop: 20 }}>
+                            <NewButton 
+                                title="Create Action" 
+                                onAdd={() => {
+                                    navigation.navigate("AddAction")
+                                }} 
+                            />
                         </View>
                     </View>
-                    <View style={{ flex: 8 }}>
-                        {actions.length > 0 && (
+                )}
+                {!noActions && (
+                    <View style={{ flex: 1 }}>
+                        <View style={{}}>
+                            <View style={{justifyContent: "center", padding: 40 }}>
+                                <Text style={{fontSize: 40, textAlign: "center"}}>{currentScore}/100</Text>
+                            </View>
+                        </View>
+                        <View>
                             <FlatList
                                 data={actions}
                                 contentContainerStyle={{ paddingHorizontal: 4, paddingBottom: 200}}
@@ -105,43 +123,27 @@ const Today = () => {
                                     )
                                 }}
                             />
-                        )}
-                        {actions.length === 0 && (
-                            <View style={{justifyContent: "center", padding: 40 }}>
-                                <Text style={{fontSize: 20, textAlign: "center", color: "gray"}}>
-                                    You have no actions yet 
-                                </Text>
-                                <View style={{width: "100%", justifyContent: "center", alignItems: "center", marginTop: 20 }}>
-                                    <NewButton 
-                                        title="Create Action" 
-                                        onAdd={() => {
-                                            navigation.navigate("AddAction")
-                                        }} 
-                                    />
-                                </View>
-                            </View>
-                        )}
-                        
+                        </View>
                     </View>
-                </View>
-            </View>
-            <View style={{
-                position: "absolute", 
-                bottom: 0,
-                paddingBottom: 60,
-                paddingTop: 10,
-                paddingHorizontal: 20,
-                width: "100%",
-                backgroundColor: 'white',
-            }}>
-                <FullButton 
-                    text={completedReportToday ? "Update": "Complete Day"}
-                    disabled={actions.length === 0}
-                    onPress={onSave}
-                />
+                )}
             </View>
         </View>
-        
+        <View style={{
+            position: "absolute", 
+            bottom: 0,
+            paddingBottom: '4%',
+            paddingTop: 10,
+            paddingHorizontal: 20,
+            width: "100%",
+            backgroundColor: 'white',
+        }}>
+            <FullButton 
+                text={completedReportToday ? "Update": "Complete Day"}
+                disabled={actions.length === 0}
+                onPress={onSave}
+            />
+        </View>
+        </>
     )
 }
 

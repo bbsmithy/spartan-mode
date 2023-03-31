@@ -28,7 +28,7 @@ const AddAction = () => {
 
 
     return (
-        <View style={{ paddingTop: 40, paddingBottom: 20, flex: 1, backgroundColor: "white", justifyContent: "space-between"}}>
+        <View style={{ paddingTop: "7%", paddingBottom: 20, flex: 1, backgroundColor: "white", justifyContent: "space-between"}}>
             <View>
                 <TouchRipple
                     rippleColor="darkgrey"

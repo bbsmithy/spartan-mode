@@ -15,7 +15,7 @@ const DailyReport = ({ route }) => {
 
 
     return (
-        <View style={{ paddingTop: 40, paddingBottom: 20, flex: 1, backgroundColor: "white"}}>
+        <View style={{ paddingTop: '7%', paddingBottom: 20, flex: 1, backgroundColor: "white"}}>
             <View>
                 <Pressable
                     android_ripple={{ color: 'darkgrey',  radius: 25 }} 

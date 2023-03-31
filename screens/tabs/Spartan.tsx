@@ -25,7 +25,7 @@ const Spartan = () => {
     }, [])
 
     return (
-        <View style={{ padding: 20, marginTop: 40, height: "100%" }}>
+        <View style={{ padding: 20, marginTop: "7%", height: "100%" }}>
             <View style={{flexDirection: "row", justifyContent: "space-between"}}>
                 <Text style={{fontSize: 24, fontWeight: "400"}}>
                     Spartan
@@ -84,7 +84,7 @@ const Spartan = () => {
             </View>  
             )}
             {!rank && (
-                <View style={{justifyContent: "center", padding: 40, marginTop: "35%" }}>
+                <View style={{justifyContent: "center", padding: 40, marginTop: "20%" }}>
                     <Text style={{fontSize: 20, textAlign: "center", color: "gray"}}>
                         You have not completed any daily reports yet.
                         Once you do you will get an average score over a maximum of 10 days.
