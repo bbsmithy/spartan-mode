@@ -25,9 +25,7 @@ export const SEED_ACTIONS = `
     ('Gym', 20, 1),
     ('Meditation', 20, 1),
     ('Hurling', 30, 1),
-    ('Porn', 100, 0),
-    ('Wank', 50, 0),
-    ('Drugs', 200, 0);
+    ('Drinking', 100, 0)
 `
 
 export const SEED_DAILY_REPORTS = `
