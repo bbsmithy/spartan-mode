@@ -8,7 +8,7 @@ Define Actions            |  Track Score         | Average Overall Score        
 - [iOS App](https://apps.apple.com/app/spartan-mode/id6447073817)
 - [Android App](https://play.google.com/store/apps/details?id=com.brian_smith_personal.spartanmode)
 
-Spartan Mode is a mobile app built with React Native and Expo. Its designed to help you track your positive and neagtive actions and get a score based off
+Spartan Mode is a mobile app built with React Native and Expo. Its designed to help you track your positive and negative actions and get a score based off
 of what your actions were each day. You have an average score over a max of 10 days and this maps to a Spartan army ranking.
 
 The hope for this project is that it helps people make consistently good decisions in their life and avoid bad decisions. Its intention is
