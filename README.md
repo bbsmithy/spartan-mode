@@ -5,8 +5,8 @@
 Spartan Mode is a mobile app built with React Native and Expo. Its designed to help you track your positive and neagtive actions and get a score based off
 of what your actions were each day. You have an average score over a max of 10 days and this maps to a Spartan army ranking.
 
-The hope for this project is that it helps people make consistently good decisions in their life and avoid bad decisions. Its intention is not to
-not to improve your productivity but help improve your overall well being.
+The hope for this project is that it helps people make consistently good decisions in their life and avoid bad decisions. Its intention is
+not to improve your productivity, but to help improve your overall well being.
 
 Gamifying the experience of making daily good choices will hopfully help people stay accountable, and also not be overly critical when they do make a mistake.
 
