@@ -18,3 +18,5 @@ Gamifying the experience of making daily good choices will hopfully help people 
 
 You can see overtime all the positive actions you've done. 
 With this way you can remain consistent with your efforts to improve your daily actions and not just give up and revert to old habits when you do make a bad descisons.
+
+
