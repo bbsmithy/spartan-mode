@@ -1,4 +1,7 @@
-<img src="https://play-lh.googleusercontent.com/Xcm5MIjYkf-ed8jv4kZMXT5JitxrWyyYW9B1togIBoZSvT9XcKYocsPzusiZ4ancl64=w480-h960-rw" style="border-radius: 15px;" width="100" height="100">
+Define Actions            |  Track Score         | Average Overall Score            |  Ranking
+:-------------------------:|:-------------------------:|:-------------------------:|:-------------------------:
+![](https://play-lh.googleusercontent.com/kkN-sisC7-UQc0xcEAEcF-mdHKTSyX4NHcsJPb5dbg1di6JyiERi6SScxToKZlTjHgMU=w1052-h592-rw)  |  ![](https://play-lh.googleusercontent.com/bSulM_YNwG1IQhHFTQwzDbd-r63ptuU7d2sERl7Q2abcyrCxivTAVEIjRRQhDzMCY4w=w1052-h592-rw) |  ![](https://play-lh.googleusercontent.com/3EfWzJWrKe2huGYNR69FPOQAVTJw9-PkUJFRZcAFATtNprtibTmY2sHC9kdiehKtcNQ=w1052-h592-rw) |  ![](https://play-lh.googleusercontent.com/onizjHNyCeu9gJGcSqBY9CBoCL2OCI8NGlc3jiccllhBXRlt8bpEBkq5JFke-xIQ_6k=w1052-h592-rw)
+
 
 # Spartan Mode
 
