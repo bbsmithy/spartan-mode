@@ -64,14 +64,12 @@ const AddAction = () => {
                 </View>
             </View>
             <View style={{paddingHorizontal: 20}}>
-            <FullButton
-                        disabled={!title || !score}
-                        text={"Add"}
-                        onPress={onAdd}
-                    />
+                <FullButton
+                    disabled={!title || !score}
+                    text={"Add"}
+                    onPress={onAdd}
+                />
             </View>
-            
-            
         </View>
     )
 }

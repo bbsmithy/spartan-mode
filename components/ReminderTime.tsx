@@ -1,7 +1,9 @@
 import { View, Text, TextInput } from 'react-native'
+import useKeyboardListener from "../hooks/useKeyboardListener"
 
 
 const ReminderTime = ({ onChangeHours, onChangeMinutes, hours, minutes }) => {
+
     return (
         <View 
             style={{

@@ -11,6 +11,7 @@ import { useNavigation } from "@react-navigation/native"
 import FullButton from "../../components/FullButton"
 import { completeOnboarding } from "../../state/thunks/OnboardingThunks"
 import { useEffect } from "react"
+import useKeyboardListener from "../../hooks/useKeyboardListener"
 
 import Database from "../../database";
 
@@ -18,6 +19,7 @@ export default function OnboardingScreen() {
 
     const dispatch = useDispatch()
     const screenIndex = useSelector(getScreenIndex)
+    const a = useKeyboardListener(20)
 
     useEffect(() => {
         Database.logTableSchema('actions')
@@ -99,9 +101,10 @@ export default function OnboardingScreen() {
              )}
             {screenIndex === 3 && <Reminder />}
         </ScrollView>
-        <FullButton 
+        <FullButton
             text={screenIndex === 3 ? "Done": "Next"}
             onPress={next}
+            style={{ position: "absolute", bottom: a + 20, left: 20, width: "100%" }}
         />
       </View>
     );

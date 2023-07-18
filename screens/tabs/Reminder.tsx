@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import FullButton from "../../components/FullButton";
 import ReminderTime from "../../components/ReminderTime";
 import { createReminderNotification } from "../../state/thunks/OnboardingThunks";
+import useKeyboardListener from "../../hooks/useKeyboardListener";
 
 const Reminder = () => {
 
@@ -13,6 +14,7 @@ const Reminder = () => {
     const navigation = useNavigation();
     const dispatch = useDispatch();
     const reminder = useSelector((state: any) => state.TodayReducer.reminder)
+    const saveBtnPos = useKeyboardListener(20)
 
     const [hours, setHours] = useState<string>(reminder?.hours)
     const [minutes, setMinutes] = useState<string>(reminder?.minutes)
@@ -69,7 +71,7 @@ const Reminder = () => {
                     hours={hours}
                 />
             </View>
-            <View style={{ paddingHorizontal: 20, position: "absolute", bottom: 20, width: "100%" }}>
+            <View style={{ paddingHorizontal: 20, position: "absolute", bottom: saveBtnPos + 20, width: "100%" }}>
                 <FullButton 
                     text={"Save"} 
                     onPress={onSave} 

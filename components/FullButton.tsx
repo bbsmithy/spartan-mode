@@ -3,9 +3,9 @@ import TouchRipple  from 'react-native-touch-ripple'
 import { red, shadow5 } from "../styles"
 
 
-const FullButton = ({ text, onPress, disabled }) => {
+const FullButton = ({ text, onPress, disabled, style }) => {
     return (
-        <View style={styles.nextBtn}>
+        <View style={[styles.nextBtn, style]}>
             <TouchRipple
                 rippleColor='white'
                 rippleDuration={400}
