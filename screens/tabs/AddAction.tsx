@@ -7,6 +7,7 @@ import TouchRipple from "react-native-touch-ripple";
 import FullButton from "../../components/FullButton";
 import OnboardingActionInput from "../../components/OnboardingActionInput";
 import { addAction } from "../../state/thunks/ActionsThunks";
+import useKeyboardListener from "../../hooks/useKeyboardListener";
 
 
 const AddAction = () => {
@@ -16,6 +17,8 @@ const AddAction = () => {
     const [score, setScore] = useState("");
     const [title, setTitle] = useState("");
     const [positive, setPositive] = useState(true);
+
+    const addBtnPos = useKeyboardListener(20)
 
     const onAdd = () => {
         dispatch(addAction({ title, score, positive }))
@@ -63,7 +66,7 @@ const AddAction = () => {
                     
                 </View>
             </View>
-            <View style={{paddingHorizontal: 20}}>
+            <View style={{paddingHorizontal: 20, position: "absolute", bottom: addBtnPos + 20, width: "100%" }}>
                 <FullButton
                     disabled={!title || !score}
                     text={"Add"}
